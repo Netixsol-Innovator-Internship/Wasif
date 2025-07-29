@@ -14,11 +14,11 @@
   --dark-blue: hsl(219, 29%, 14%);
   --black: hsl(0, 0%, 7%);
 
-  font-size: 16px;
+  font-size: 14px;
 }
 
 body {
-  background-color: var(--grey-100);
+  background-color: var(--purple-50);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,8 +66,8 @@ body {
   content: "";
   position: absolute;
   top: 0;
-  right: 5rem; /* 80px → 5rem */
-  width: 7.5rem; /* 120px → 7.5rem */
+  right: 5rem;
+  width: 7.5rem;
   height: 7.5rem;
   background-image: url("./images/bg-pattern-quotation.svg");
   background-repeat: no-repeat;
@@ -157,31 +157,23 @@ body {
   color: var(--grey-200);
 }
 
-@media only screen and (max-width: 768px) {
+/* Decrease the Padding for the grid items in smaller screens for better visibility  */
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  body {
+    padding: 0 20px;
+  }
+
   .grid-container {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
-  }
-
-  .item1 {
-    grid-column: 1 / span 2;
-  }
-
-  .item2,
-  .item3,
-  .item4,
-  .item5 {
-    grid-column: span 1;
-    grid-row: auto;
-    height: fit-content;
-  }
-
-  .item3 {
-    grid-row: auto;
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
   }
 }
 
-@media only screen and (max-width: 380px) {
+/* Applied Mobile Layout Style Below 768px screens  */
+
+@media only screen and (max-width: 768px) {
   body {
     display: block;
     padding: 0 20px;
@@ -191,8 +183,8 @@ body {
   .grid-container {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
-    margin: 1rem auto;
+    gap: 16px;
+    margin: 16px auto;
   }
 
   .item1,
@@ -206,19 +198,19 @@ body {
 
   .grid-item {
     width: 90%;
-    padding: 1.5rem;
+    padding: 24px;
     margin-bottom: 0;
   }
 
   .item1::before {
-    right: 1.5rem;
-    width: 5rem;
-    height: 5rem;
+    right: 24px;
+    width: 80px;
+    height: 80px;
   }
 
   .boldcontent {
     font-size: 1.2rem;
-    margin: 1rem 0 0.75rem;
+    margin: 16px 0 12px;
   }
 
   .description {
@@ -226,8 +218,8 @@ body {
   }
 
   .grid-item .image {
-    width: 2rem;
-    height: 2rem;
+    width: 32px;
+    height: 32px;
   }
 
   .grid-item .name {
