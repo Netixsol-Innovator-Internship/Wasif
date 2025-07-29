@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap");
+
+:root {
+  /* Purple shades */
+  --purple-50: hsl(260, 100%, 95%);
+  --purple-300: hsl(264, 82%, 80%);
+  --purple-500: hsl(263, 55%, 52%);
+
+  /* Neutral colors */
+  --grey-100: hsl(214, 17%, 92%);
+  --grey-200: hsl(0, 0%, 81%);
+  --grey-400: hsl(224, 10%, 45%);
+  --grey-500: hsl(217, 19%, 35%);
+  --dark-blue: hsl(219, 29%, 14%);
+  --black: hsl(0, 0%, 7%);
+
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--grey-100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0 40px;
+  box-sizing: border-box;
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, minmax(15rem, auto)); /* 240px → 15rem */
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 30px auto;
+}
+
+.grid-item {
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.grid-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* First row */
+.item1 {
+  background-color: var(--purple-500);
+  grid-column: 1 / span 2;
+  grid-row: 1;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.item1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 5rem; /* 80px → 5rem */
+  width: 7.5rem; /* 120px → 7.5rem */
+  height: 7.5rem;
+  background-image: url("./images/bg-pattern-quotation.svg");
+  background-repeat: no-repeat;
+  opacity: 0.7;
+}
+
+.grid-item .imagesection {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 0.9375rem;
+  z-index: 1;
+}
+
+.grid-item .image {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 2px solid var(--grey-200);
+}
+
+.item5 .image {
+  border: 2px solid var(--purple-500);
+}
+
+.grid-item .name {
+  font-weight: 600;
+  margin: 0;
+  font-size: 14px;
+}
+
+.grid-item .verified {
+  margin: 0;
+  opacity: 0.7;
+  font-size: 12px;
+}
+
+.boldcontent {
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin: 15px 0 10px;
+  position: relative;
+  z-index: 1;
+  line-height: 1.3;
+}
+
+.description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0.7;
+  margin-top: 0;
+}
+
+.item2 {
+  background-color: var(--grey-500);
+  grid-column: 3;
+  grid-row: 1;
+  color: white;
+}
+
+.item3 {
+  background-color: white;
+  grid-column: 4;
+  grid-row: 1 / span 2;
+  color: var(--grey-500);
+}
+
+.item4 {
+  background-color: white;
+  grid-column: 1;
+  grid-row: 2;
+  color: var(--grey-500);
+}
+
+.item5 {
+  background-color: var(--dark-blue);
+  grid-column: 2 / span 2;
+  grid-row: 2;
+  color: white;
+}
+
+.item3 .boldcontent,
+.item4 .boldcontent {
+  color: var(--grey-500);
+}
+.item5 .boldcontent {
+  color: var(--grey-200);
+}
+
+@media only screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .item1 {
+    grid-column: 1 / span 2;
+  }
+
+  .item2,
+  .item3,
+  .item4,
+  .item5 {
+    grid-column: span 1;
+    grid-row: auto;
+    height: fit-content;
+  }
+
+  .item3 {
+    grid-row: auto;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  body {
+    display: block;
+    padding: 0 20px;
+    min-height: auto;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1rem auto;
+  }
+
+  .item1,
+  .item2,
+  .item3,
+  .item4,
+  .item5 {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .grid-item {
+    width: 90%;
+    padding: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .item1::before {
+    right: 1.5rem;
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .boldcontent {
+    font-size: 1.2rem;
+    margin: 1rem 0 0.75rem;
+  }
+
+  .description {
+    font-size: 0.85rem;
+  }
+
+  .grid-item .image {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .grid-item .name {
+    font-size: 0.9rem;
+  }
+
+  .grid-item .verified {
+    font-size: 0.8rem;
+  }
+}
