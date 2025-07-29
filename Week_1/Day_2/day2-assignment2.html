@@ -20,7 +20,7 @@
         <p>Creative and Innovative Web Developer</p>
         <div class="w-full border-b-2 border-black pb-3">
           <div
-            class="md:w-[650px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-1 mt-4 text-xs font-semibold"
+            class="md:w-[650px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-1 mt-4 text-xs font-semibold"
           >
             <a href="#">
               <i class="fa-solid fa-location-dot text-green-500 mr-2"></i>
@@ -49,7 +49,7 @@
       >
         <h1 class="text-xl text-black font-bold w-full md:w-[20%]">Profile</h1>
         <div
-          class="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-48 text-center text-[15px] w-full md:w-[80%]"
+          class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-48 text-center text-[15px] w-full md:w-[80%]"
         >
           <div class="flex flex-col items-center">
             <i class="fa-brands fa-linkedin text-blue-600"></i>
@@ -59,7 +59,9 @@
             <i class="fa-brands fa-github text-black"></i>
             <span>GitHub</span>
           </div>
-          <div class="flex flex-col items-center">
+          <div
+            class="flex flex-col items-center justify-center md:justify-normal"
+          >
             <i class="fa-brands fa-stack-overflow text-orange-600"></i>
             <span>Stack Overflow</span>
           </div>
@@ -85,7 +87,6 @@
         </div>
       </section>
 
-      <!-- Experiences -->
       <!-- Experience -->
       <section
         name="Experience"
@@ -102,7 +103,9 @@
               <strong class="text-black text-lg"
                 >Creative Solutions Inc.</strong
               >
-              <strong class="text-sm text-black">Jan 2019 – Present</strong>
+              <strong class="text-sm text-black whitespace-nowrap"
+                >Jan 2019 – Present</strong
+              >
             </div>
             <span class="text-gray-700 font-medium">Senior Web Developer</span>
             <div class="flex flex-col text-sm text-gray-600 space-y-1">
@@ -132,9 +135,11 @@
 
           <!-- TechAdvancers -->
           <div class="flex flex-col items-start text-left space-y-3">
-            <div class="flex justify-between w-full items-center">
+            <div class="flex justify-between gap-x-2 w-full items-center">
               <strong class="text-black text-lg">TechAdvancers</strong>
-              <strong class="text-sm text-black">Jun 2016 – Dec 2018</strong>
+              <strong class="text-sm text-black whitespace-nowrap"
+                >Jun 2016 – Dec 2018</strong
+              >
             </div>
             <span class="text-gray-700 font-medium">Web Developer</span>
             <div class="flex flex-col text-sm text-gray-600 space-y-1">
@@ -168,7 +173,7 @@
           Education
         </h1>
         <div
-          class="grid grid-cols-1 sm:grid-cols-2 md:gap-52 text-center text-[16px] w-full md:w-[80%]"
+          class="grid grid-cols-1 sm:grid-cols-2 md:gap-52 text-left md:text-center text-[16px] w-full md:w-[80%]"
         >
           <div class="flex flex-col items-center">
             <strong class="text-black">University of California</strong>
@@ -254,7 +259,7 @@
           class="flex flex-col md:flex-row gap-6 gap-x-12 lg:gap-x-18 w-full md:w-[80%]"
         >
           <div class="flex flex-col items-start text-left space-y-2">
-            <div class="flex items-center gap-18">
+            <div class="flex items-center gap-2 md:gap-18">
               <strong class="text-black whitespace-nowrap"
                 >Full-Stack Web Development</strong
               >
@@ -264,7 +269,7 @@
           </div>
 
           <div class="flex flex-col items-start text-left space-y-2">
-            <div class="flex items-center whitespace-nowrap gap-18">
+            <div class="flex items-center whitespace-nowrap gap-10 md:gap-18">
               <strong class="text-black">AWS Certified Developer</strong>
               <strong class="whitespace-nowrap text-black">2019</strong>
             </div>
