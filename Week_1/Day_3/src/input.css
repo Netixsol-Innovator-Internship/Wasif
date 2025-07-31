@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-poppins;
+}
+.hero {
+  @apply bg-landing-bg bg-cover bg-center bg-no-repeat h-full w-full pb-20;
+}
+.destination {
+  @apply bg-destination-bg bg-cover bg-center bg-no-repeat h-screen w-full pb-20;
+}
+.desert {
+  @apply bg-desert-bg bg-cover bg-center bg-no-repeat h-screen w-full;
+}
+.about {
+  @apply bg-about-bg bg-cover bg-center bg-no-repeat h-screen w-full;
+}
