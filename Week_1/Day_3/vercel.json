@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/**/*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "src/**/*.{js,css}",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/", "dest": "/src/index.html" },
+    { "src": "/AboutUs", "dest": "/src/AboutUs.html" },
+    { "src": "/destination", "dest": "/src/destination.html" },
+    { "src": "/(.*)", "dest": "/src/$1" }
+  ]
+}
