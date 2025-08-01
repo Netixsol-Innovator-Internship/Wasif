@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#DA8F4D] text-white text-nowrap text-lg 3xl:text-[21.6px] px-10 3xl:px-16 py-1 3xl:py-3 border-[1.5px] border-white rounded-xl 3xl:rounded-[22.95px];
+  }
+  .btn-secondary {
+    @apply bg-[#DA8F4D] text-white text-nowrap text-lg 3xl:text-[17.2px] px-6 3xl:px-10 py-1 3xl:py-3 border-[1.5px] border-white font-medium rounded-xl 3xl:rounded-[22.95px];
+  }
+  .btn-colorless {
+    @apply bg-transparent text-white hover:bg-white hover:text-black text-nowrap text-lg 3xl:text-[17.2px] px-10 3xl:px-10 py-1 3xl:py-3 border-[1.5px] border-white font-medium rounded-xl 3xl:rounded-[22.95px];
+  }
+    .btn-explore {
+    @apply bg-white/35 text-white text-nowrap text-xs lg:text-[16px] font-semibold px-4 3xl:px-14 py-2 3xl:py-4 border-[1.5px] border-[#DA8F4D] rounded-xl 3xl:rounded-[22.95px];
+  }
+}

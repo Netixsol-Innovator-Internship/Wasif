@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <!-- Fontshare - Clash Display -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Hackathon</title>
+  </head>
+  <body
+    class="font-poppins text-white w-full overflow-x-hidden overflow-y-auto"
+  >
+    <section
+      class="bg-landing-bg bg-cover bg-center-bg-no-repeat h-full 3xl:font-semibold"
+    >
+      <header class="mx-auto bg-white/10 backdrop-blur-3xl sticky top-0 z-50">
+        <div
+          class="container mx-auto flex justify-between items-center py-3 3xl:py-6 px-4 sm:px-8 lg:px-16"
+        >
+          <div>
+            <h1 class="text-lg 3xl:text-[26px] font-bold">LogoHere</h1>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex space-x-4 lg:space-x-16">
+            <ul
+              class="flex justify-between text-base 3xl:text-[21.6px] items-center space-x-6 lg:space-x-10 3xl:space-x-16"
+            >
+              <li class="hover:text-[#DA8F4D] transition-colors duration-300">
+                <a href="#">About</a>
+              </li>
+              <li class="hover:text-[#DA8F4D] transition-colors duration-300">
+                <a href="#">Collection</a>
+              </li>
+              <li class="hover:text-[#DA8F4D] transition-colors duration-300">
+                <a href="#">Creations</a>
+              </li>
+              <li
+                class="whitespace-nowrap hover:text-[#DA8F4D] transition-colors duration-300"
+              >
+                <a href="#">Road Map</a>
+              </li>
+            </ul>
+            <button class="btn-primary">Sign In</button>
+          </nav>
+
+          <!-- Mobile Toggle Button -->
+          <button
+            id="mobile-menu-button"
+            class="md:hidden text-white focus:outline-none"
+          >
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden bg-black/20 backdrop-blur-lg transition-all duration-300 ease-in-out overflow-hidden"
+        >
+          <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+            <a
+              href="#"
+              class="block py-2 hover:text-[#DA8F4D] transition-colors duration-300"
+              >About</a
+            >
+            <a
+              href="#"
+              class="block py-2 hover:text-[#DA8F4D] transition-colors duration-300"
+              >Collection</a
+            >
+            <a
+              href="#"
+              class="block py-2 hover:text-[#DA8F4D] transition-colors duration-300"
+              >Creations</a
+            >
+            <a
+              href="#"
+              class="block py-2 hover:text-[#DA8F4D] transition-colors duration-300"
+              >Road Map</a
+            >
+            <button
+              class="bg-gradient-to-r from-[#DA8F4D] to-[#E6DCBA] text-white px-4 py-2 rounded-lg font-semibold w-full max-w-[120px] mx-auto mt-2 mb-4"
+            >
+              Sign In
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Hero Section  -->
+      <section class="container mx-auto py-6 3xl:py-32">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-x-16 px-12 lg:px-24 3xl:px-[200px] gap-4"
+        >
+          <div class>
+            <h1
+              data-aos="fade-in"
+              data-aos-duration="300"
+              class="text-4xl 3xl:text-[86.4px] font-bold leading-tight mt-2 3xl:mt-6"
+            >
+              We Have High Quality
+              <span class="text-[#DA8F4D]"> NFT </span>
+              <span class="flex justify-between items-center">
+                Collections
+                <img
+                  src="../public/assets/images/star.png"
+                  alt
+                  class="hidden 2xl:block -mt-32"
+                />
+              </span>
+            </h1>
+
+            <p
+              class="text-[13.2px] text-left text-wrap"
+              data-aos="fade-up"
+              data-aos-duration="600"
+            >
+              Lorem ipsum dolor sit amet consectetur. Rhoncus massa suspendisse
+              turpis sed viverra tempus tortor. Habitant accumsan sagittis in
+              facilisi placerat ac. Laoreet scelerisque viverra viverra ornare
+              fermentum faucibus sit purus volutpat. Egestas lectus ornare
+              convallis ornare nullam enim neque.
+            </p>
+
+            <div class="mt-9 space-x-0 md:space-x-6 space-y-6">
+              <button
+                data-aos="fade-up"
+                data-aos-duration="400"
+                class="btn-secondary"
+              >
+                Get WhiteList
+              </button>
+              <button
+                data-aos="fade-up"
+                data-aos-duration="600"
+                class="btn-colorless"
+              >
+                Contact Us
+              </button>
+            </div>
+            <div class="flex justify-center items-center mt-10 w-full gap-x-16">
+              <div
+                data-aos="fade-up"
+                data-aos-duration="800"
+                class="w-full flex items-center justify-evenly font-spacemono font-bold bg-[#6B6B6B21] rounded-3xl text-lg 3xl:text-[34px] leading-loose py-9"
+              >
+                <div>
+                  <h1>240k+</h1>
+                  <p
+                    class="font-worksans font-normal text-base 3xl:text-[30px]"
+                  >
+                    Total Sales
+                  </p>
+                </div>
+                <div>
+                  <h1>100k+</h1>
+                  <p
+                    class="font-worksans font-normal text-base 3xl:text-[30px]"
+                  >
+                    Auction
+                  </p>
+                </div>
+                <div>
+                  <h1>240k+</h1>
+                  <p
+                    class="font-worksans font-normal text-base 3xl:text-[30px]"
+                  >
+                    Artists
+                  </p>
+                </div>
+              </div>
+              <div class="w-[20%] hidden lg:block">
+                <img src="../public//assets/images/thinsmooth.png" alt />
+              </div>
+            </div>
+          </div>
+
+          <div class="relative flex items-end">
+            <!-- Hero Image -->
+            <img
+              data-aos="fade-up"
+              data-aos-duration="400"
+              src="../public/assets/images/HeroImage.png"
+              alt="Hero Image"
+              class="w-full max-w-[500px] 3xl:max-w-[800px] h-auto object-cover"
+              loading="lazy"
+            />
+
+            <!-- Arrow Button -->
+            <div
+              data-aos="fade-up"
+              data-aos-duration="500"
+              class="flex items-center justify-center border-2 border-white rounded-r-xl h-[50px] md:h-[100px] lg:h-[150px] xl:h-[200px] 3xl:h-[250px] w-[30px] md:w-[40px] lg:w-[50px] -ml-[2px] relative -top-8 md:-top-12 lg:-top-16 bg-black/20 hover:bg-black/40 transition-all duration-300 group cursor-pointer"
+            >
+              <i
+                class="fa-solid fa-angle-right text-white text-lg md:text-xl lg:text-2xl group-hover:scale-110 transition-transform"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- About Section  -->
+    <section class="bg-black w-full h-full">
+      <div class="container mx-auto">
+        <h1
+          data-aos="fade-up"
+          data-aos-duration="400"
+          class="text-3xl 3xl:text-[54px] font-bold text-center pt-10 lg:pt-16"
+        >
+          About Us
+        </h1>
+
+        <!-- grid section  -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 px-6 pt-6 py-6 mt-20 3xl:mt-32 gap-10 bg-[#DA8F4D17] h-full"
+        >
+          <!-- Image Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 px-12 gap-4">
+            <div
+              data-aos="fade-up-right"
+              data-aos-duration="600"
+              class="bg-[#2B2B2BAD] md:bg-transparent lg:bg-[#2B2B2BAD] rounded-2xl overflow-hidden w-full h-auto 3xl:h-64 flex items-center justify-center"
+            >
+              <img
+                src="../public/assets/images/A1.png"
+                alt="A1"
+                class="w-full h-full object-contain"
+              />
+            </div>
+
+            <div
+              data-aos="fade-up-left"
+              data-aos-duration="600"
+              class="bg-[#2B2B2BAD] md:bg-transparent lg:bg-[#2B2B2BAD] rounded-2xl overflow-hidden w-full h-auto 3xl:h-64 flex items-center justify-center"
+            >
+              <img
+                src="../public/assets/images/A2.png"
+                alt="A2"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <div
+              data-aos="fade-up-right"
+              data-aos-duration="600"
+              class="bg-[#2B2B2BAD] md:bg-transparent lg:bg-[#2B2B2BAD] rounded-2xl overflow-hidden w-full h-auto 3xl:h-64 flex items-center justify-center"
+            >
+              <img
+                src="../public/assets/images/A3.png"
+                alt="A3"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <div
+              data-aos="fade-up-left"
+              data-aos-duration="600"
+              class="bg-[#2B2B2BAD] md:bg-transparent lg:bg-[#2B2B2BAD] rounded-2xl overflow-hidden w-full h-auto 3xl:h-64 flex items-center justify-center"
+            >
+              <img
+                src="../public/assets/images/A4.png"
+                alt="A4"
+                class="lg:w-full lg:h-full lg:object-contain sm:scale-[1.5] 2xl:scale-[1.1]"
+              />
+            </div>
+          </div>
+
+          <!-- Text Section -->
+          <div class="space-y-10 pt-10 md:pt-32">
+            <p data-aos="fade-up" data-aos-duration="400">
+              Lorem ipsum dolor sit amet consectetur. Pharetra faucibus donec
+              ultrices eros elit metus morbi aliquam quis. Suspendisse massa
+              ullamcorper tortor morbi nisi leo. Ultrices leo vel tincidunt nunc
+              eget elit. Gravida et duis ipsum pellentesque libero. Tellus
+              rhoncus metus et eget mattis fringilla nec id. Amet ultrices quam
+              ridiculus tellus. Leo adipiscing tincidunt amet nisi semper
+              adipiscing quam in est. Tempor sed dui nunc diam adipiscing at.
+            </p>
+            <p data-aos="fade-up" data-aos-duration="500">
+              Tellus rhoncus metus et eget mattis fringilla nec id. Amet
+              ultrices quam ridiculus tellus. Leo adipiscing tincidunt amet nisi
+              semper adipiscing quam in est. Tempor sed dui nunc diam adipiscing
+              at.
+            </p>
+            <div class="3xl:mt-10">
+              <button
+                data-aos="fade-up"
+                data-aos-duration="600"
+                class="btn-colorless bg-white/35 border-[1.5px] border-[#DA8F4D] px-6 py-2 rounded-lg hover:bg-white/50 transition"
+              >
+                Connect Wallet
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Collectors Section  -->
+    <section class="bg-black w-full h-full py-12">
+      <div class="container mx-auto px-4">
+        <h1
+          data-aos="fade-up"
+          data-aos-duration="400"
+          class="text-3xl 3xl:text-[54px] font-bold text-center pt-6 text-white mb-12"
+        >
+          Top Collections
+        </h1>
+        <p
+          data-aos="fade-up"
+          data-aos-duration="500"
+          class="text-center text-white text-wrap w-full lg:w-4/12 2xl:w-[390px] mx-auto"
+        >
+          The largest and unique Super rare NFT marketplace For
+          crypto-collectibles
+        </p>
+
+        <!-- Grid Container -->
+        <div class="bg-collectors-bg">
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-3 lg:gap-4 3xl:gap-[10px] px-2 lg:px-[90px] xl:px-[160px] 3xl:px-[190px] mt-4 pt-4 3xl:pt-2 font-clash"
+          >
+            <!-- Grid Item 1 -->
+            <div
+              data-aos="fade-down-right"
+              data-aos-duration="600"
+              class="relative bg-[#F4E9C417] rounded-2xl p-16 3xl:p-24 flex flex-col items-center text-left gap-4"
+            >
+              <!--Dot -->
+              <div
+                class="absolute top-4 left-4 text-lg 2xl:text-2xl font-normal text-[#858584]"
+              >
+                Created by
+                <div class="mt-2 flex items-center gap-2">
+                  <div
+                    class="w-5 h-5 3xl:w-[27px] 3xl:h-[27px] rounded-full bg-white"
+                  ></div>
+                  <span class="text-sm 2xl:text-base text-[#EA9112] font-bold"
+                    >Jhames Watson</span
+                  >
+                </div>
+              </div>
+
+              <img
+                src="../public/assets/images/C1.png"
+                alt="Creator"
+                class="scale-[1.04] object-cover mt-12"
+              />
+
+              <p
+                class="absolute bottom-4 left-4 text-[#858584] text-sm 2xl:text-xl whitespace-nowrap"
+              >
+                Created by:
+                <span class="font-spacemono text-[#EA9112]">Jhames Watson</span>
+              </p>
+            </div>
+            <!-- Grid Item 2 -->
+            <div
+              data-aos="fade-up"
+              data-aos-duration="800"
+              class="relative bg-[#F4E9C417] rounded-2xl p-16 3xl:p-24 flex flex-col items-center text-left gap-4"
+            >
+              <!--Dot -->
+              <div
+                class="absolute top-4 left-4 text-lg 2xl:text-2xl font-normal text-[#858584]"
+              >
+                Created by
+                <div class="mt-2 flex items-center gap-2">
+                  <div class="w-3 h-3 rounded-full bg-white"></div>
+                  <span class="text-sm 2xl:text-base text-[#EA9112] font-bold"
+                    >Jhames Watson</span
+                  >
+                </div>
+              </div>
+
+              <img
+                src="../public/assets/images/C2.png"
+                alt="Creator"
+                class="scale-[1.04] object-cover mt-12"
+              />
+
+              <p
+                class="absolute bottom-4 left-4 text-[#858584] text-sm 2xl:text-xl whitespace-nowrap"
+              >
+                Created by:
+                <span class="font-spacemono text-[#EA9112]">Jhames Watson</span>
+              </p>
+            </div>
+            <!-- Grid Item 3 -->
+            <div
+              data-aos="fade-down-left"
+              data-aos-duration="600"
+              class="relative bg-[#F4E9C417] rounded-2xl p-16 3xl:p-24 flex flex-col items-center text-left gap-4"
+            >
+              <!--Dot -->
+              <div
+                class="absolute top-4 left-4 text-lg 2xl:text-2xl font-normal text-[#858584]"
+              >
+                Created by
+                <div class="mt-2 flex items-center gap-2">
+                  <div class="w-3 h-3 rounded-full bg-white"></div>
+                  <span class="text-sm 2xl:text-base text-[#EA9112] font-bold"
+                    >Jhames Watson</span
+                  >
+                </div>
+              </div>
+
+              <img
+                src="../public/assets/images/C3.png"
+                alt="Creator"
+                class="scale-[1.04] object-cover mt-12"
+              />
+
+              <p
+                class="absolute bottom-4 left-4 text-[#858584] text-sm 2xl:text-xl whitespace-nowrap"
+              >
+                Created by:
+                <span class="font-spacemono text-[#EA9112]">Jhames Watson</span>
+              </p>
+            </div>
+            <!-- Grid Item 4 -->
+            <div
+              data-aos="fade-up-right"
+              data-aos-duration="800"
+              class="relative bg-[#F4E9C417] rounded-2xl p-16 3xl:p-24 flex flex-col items-center text-left gap-4"
+            >
+              <!--Dot -->
+              <div
+                class="absolute top-4 left-4 text-lg 2xl:text-2xl font-normal text-[#858584]"
+              >
+                Created by
+                <div class="mt-2 flex items-center gap-2">
+                  <div class="w-3 h-3 rounded-full bg-white"></div>
+                  <span class="text-sm 2xl:text-base text-[#EA9112] font-bold"
+                    >Jhames Watson</span
+                  >
+                </div>
+              </div>
+
+              <img
+                src="../public/assets/images/C4.png"
+                alt="Creator"
+                class="scale-[1.04] object-cover mt-12"
+              />
+
+              <p
+                class="absolute bottom-4 left-4 text-[#858584] text-sm 2xl:text-xl whitespace-nowrap"
+              >
+                Created by:
+                <span class="font-spacemono text-[#EA9112]">Jhames Watson</span>
+              </p>
+            </div>
+            <!-- Grid Item 5 -->
+            <div
+              data-aos="fade-up"
+              data-aos-duration="600"
+              class="relative bg-[#F4E9C417] rounded-2xl p-16 3xl:p-24 flex flex-col items-center text-left gap-4"
+            >
+              <!--Dot -->
+              <div
+                class="absolute top-4 left-4 text-lg 2xl:text-2xl font-normal text-[#858584]"
+              >
+                Created by
+                <div class="mt-2 flex items-center gap-2">
+                  <div class="w-3 h-3 rounded-full bg-white"></div>
+                  <span class="text-sm 2xl:text-base text-[#EA9112] font-bold"
+                    >Jhames Watson</span
+                  >
+                </div>
+              </div>
+
+              <img
+                src="../public/assets/images/C5.png"
+                alt="Creator"
+                class="scale-[1.04] object-cover mt-12"
+              />
+
+              <p
+                class="absolute bottom-4 left-4 text-[#858584] text-sm 2xl:text-xl whitespace-nowrap"
+              >
+                Created by:
+                <span class="font-spacemono text-[#EA9112]">Jhames Watson</span>
+              </p>
+            </div>
+            <!-- Grid Item 6 -->
+            <div
+              data-aos="fade-up-left"
+              data-aos-duration="800"
+              class="relative bg-[#F4E9C417] rounded-2xl p-16 3xl:p-24 flex flex-col items-center text-left gap-4"
+            >
+              <!--Dot -->
+              <div
+                class="absolute top-4 left-4 text-lg 2xl:text-2xl font-normal text-[#858584]"
+              >
+                Created by
+                <div class="mt-2 flex items-center gap-2">
+                  <div class="w-3 h-3 rounded-full bg-white"></div>
+                  <span class="text-sm 2xl:text-base text-[#EA9112] font-bold"
+                    >Jhames Watson</span
+                  >
+                </div>
+              </div>
+
+              <img
+                src="../public/assets/images/C6.png"
+                alt="Creator"
+                class="scale-[1.04] object-cover mt-12"
+              />
+
+              <p
+                class="absolute bottom-4 left-4 text-[#858584] text-sm 2xl:text-xl whitespace-nowrap"
+              >
+                Created by:
+                <span class="font-spacemono text-[#EA9112]">Jhames Watson</span>
+              </p>
+            </div>
+          </div>
+          <div class="flex justify-center pt-10 2xl:pt-20">
+            <button
+              data-aos="fade-up"
+              data-aos-duration="600"
+              class="btn-explore"
+            >
+              Explore More
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Top Creator  -->
+    <section class="bg-black w-full h-full py-12">
+      <div class="container mx-auto px-4">
+        <h1
+          class="text-3xl 3xl:text-[54px] font-bold text-center pt-6 text-white mb-12"
+        >
+          Top Creators
+        </h1>
+        <p class="text-center text-white">
+          Checkout Top Rated Creators on the NFT Marketplace
+        </p>
+
+        <!-- Grid Container -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-4 gap-3 lg:gap-6 3xl:gap-10 xl:px-[160px] 3xl:px-[190px] pt-16 3xl:pt-20 font-worksans"
+        >
+          <!-- Grid Item 1 -->
+          <div
+            data-aos="fade-up"
+            data-aos-duration="600"
+            class="relative bg-[#E6DCBA33] rounded-xl 2xl:rounded-2xl p-6 flex flex-col items-center 3xl:py-12"
+          >
+            <span
+              class="absolute top-4 left-4 text-2xl bg-[#2B2B2B] px-3 py-1 rounded-full font-bold text-[#858584]"
+              >1</span
+            >
+            <img
+              src="../public//assets/images/T1.png"
+              alt="Creator 1"
+              class="w-24 h-24 3xl:w-32 3xl:h-32 rounded-full object-cover mb-4"
+            />
+            <h3 class="font-bold text-lg text-white">John NFT</h3>
+            <p class="text-[#858584] text-sm 2xl:text-2xl text-nowrap">
+              Total Sales:
+              <span class="font-spacemono text-white">34.53 ETH</span>
+            </p>
+          </div>
+
+          <!-- Grid Item 2 -->
+          <div
+            data-aos="fade-up"
+            data-aos-duration="600"
+            class="relative bg-[#E6DCBA33] rounded-xl 2xl:rounded-2xl p-6 flex flex-col items-center 3xl:py-12"
+          >
+            <span
+              class="absolute top-4 left-4 text-2xl bg-[#2B2B2B] px-3 py-1 rounded-full font-bold text-[#858584]"
+              >2</span
+            >
+            <img
+              src="../public//assets/images/T2.png"
+              alt="Creator 1"
+              class="w-24 h-24 3xl:w-32 3xl:h-32 rounded-full object-cover mb-4"
+            />
+            <h3 class="font-bold text-lg text-white">John NFT</h3>
+            <p class="text-[#858584] text-sm 2xl:text-2xl text-nowrap">
+              Total Sales:
+              <span class="font-spacemono text-white">34.53 ETH</span>
+            </p>
+          </div>
+
+          <!-- Grid Item 3 -->
+          <div
+            data-aos="fade-up"
+            data-aos-duration="600"
+            class="relative bg-[#E6DCBA33] rounded-xl 2xl:rounded-2xl p-6 flex flex-col items-center 3xl:py-12"
+          >
+            <span
+              class="absolute top-4 left-4 text-2xl bg-[#2B2B2B] px-3 py-1 rounded-full font-bold text-[#858584]"
+              >3</span
+            >
+            <img
+              src="../public//assets/images/T3.png"
+              alt="Creator 1"
+              class="w-24 h-24 3xl:w-32 3xl:h-32 rounded-full object-cover mb-4"
+            />
+            <h3 class="font-bold text-lg text-white">John NFT</h3>
+            <p class="text-[#858584] text-sm 2xl:text-2xl text-nowrap">
+              Total Sales:
+              <span class="font-spacemono text-white">34.53 ETH</span>
+            </p>
+          </div>
+
+          <!-- Grid Item 4 -->
+          <div
+            data-aos="fade-up"
+            data-aos-duration="600"
+            class="relative bg-[#E6DCBA33] rounded-xl 2xl:rounded-2xl p-6 flex flex-col items-center 3xl:py-12"
+          >
+            <span
+              class="absolute top-4 left-4 text-2xl bg-[#2B2B2B] px-3 py-1 rounded-full font-bold text-[#858584]"
+              >4</span
+            >
+            <img
+              src="../public//assets/images/T4.png"
+              alt="Creator 1"
+              class="w-24 h-24 3xl:w-32 3xl:h-32 rounded-full object-cover mb-4"
+            />
+            <h3 class="font-bold text-lg text-white">John NFT</h3>
+            <p class="text-[#858584] text-sm 2xl:text-2xl text-nowrap">
+              Total Sales:
+              <span class="font-spacemono text-white">34.53 ETH</span>
+            </p>
+          </div>
+
+          <!-- Grid Item 5 -->
+          <div
+            data-aos="fade-up"
+            data-aos-duration="700"
+            class="relative bg-[#E6DCBA33] rounded-xl 2xl:rounded-2xl p-6 flex flex-col items-center 3xl:py-12"
+          >
+            <span
+              class="absolute top-4 left-4 text-2xl bg-[#2B2B2B] px-3 py-1 rounded-full font-bold text-[#858584]"
+              >5</span
+            >
+            <img
+              src="../public//assets/images/T5.png"
+              alt="Creator 1"
+              class="w-24 h-24 3xl:w-32 3xl:h-32 rounded-full object-cover mb-4"
+            />
+            <h3 class="font-bold text-lg text-white">John NFT</h3>
+            <p class="text-[#858584] text-sm 2xl:text-2xl text-nowrap">
+              Total Sales:
+              <span class="font-spacemono text-white">34.53 ETH</span>
+            </p>
+          </div>
+
+          <!-- Grid Item 6 -->
+          <div
+            data-aos="fade-up"
+            data-aos-duration="700"
+            class="relative bg-[#E6DCBA33] rounded-xl 2xl:rounded-2xl p-6 flex flex-col items-center 3xl:py-12"
+          >
+            <span
+              class="absolute top-4 left-4 text-2xl bg-[#2B2B2B] px-3 py-1 rounded-full font-bold text-[#858584]"
+              >6</span
+            >
+            <img
+              src="../public//assets/images/T6.png"
+              alt="Creator 1"
+              class="w-24 h-24 3xl:w-32 3xl:h-32 rounded-full object-cover mb-4"
+            />
+            <h3 class="font-bold text-lg text-white">John NFT</h3>
+            <p class="text-[#858584] text-sm 2xl:text-2xl text-nowrap">
+              Total Sales:
+              <span class="font-spacemono text-white">34.53 ETH</span>
+            </p>
+          </div>
+
+          <!-- Grid Item 7 -->
+          <div
+            data-aos="fade-up"
+            data-aos-duration="700"
+            class="relative bg-[#E6DCBA33] rounded-xl 2xl:rounded-2xl p-6 flex flex-col items-center 3xl:py-12"
+          >
+            <span
+              class="absolute top-4 left-4 text-2xl bg-[#2B2B2B] px-3 py-1 rounded-full font-bold text-[#858584]"
+              >7</span
+            >
+            <img
+              src="../public//assets/images/T7.png"
+              alt="Creator 1"
+              class="w-24 h-24 3xl:w-32 3xl:h-32 rounded-full object-cover mb-4"
+            />
+            <h3 class="font-bold text-lg text-white">John NFT</h3>
+            <p class="text-[#858584] text-sm 2xl:text-2xl text-nowrap">
+              Total Sales:
+              <span class="font-spacemono text-white">34.53 ETH</span>
+            </p>
+          </div>
+
+          <!-- Grid Item 8 -->
+          <div
+            data-aos="fade-up"
+            data-aos-duration="700"
+            class="relative bg-[#E6DCBA33] rounded-xl 2xl:rounded-2xl p-6 flex flex-col items-center 3xl:py-12"
+          >
+            <span
+              class="absolute top-4 left-4 text-2xl bg-[#2B2B2B] px-3 py-1 rounded-full font-bold text-[#858584]"
+              >8</span
+            >
+            <img
+              src="../public//assets/images/T8.png"
+              alt="Creator 1"
+              class="w-24 h-24 3xl:w-32 3xl:h-32 rounded-full object-cover mb-4"
+            />
+            <h3 class="font-bold text-lg text-white">John NFT</h3>
+            <p class="text-[#858584] text-sm 2xl:text-2xl text-nowrap">
+              Total Sales:
+              <span class="font-spacemono text-white">34.53 ETH</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Road Map  -->
+    <section class="bg-black py-12">
+      <div class="container mx-auto px-4">
+        <h1
+          data-aos="fade-up"
+          data-aos-duration="600"
+          class="text-3xl 3xl:text-[54px] font-bold text-center text-white"
+        >
+          Road Map
+        </h1>
+        <div
+          class="relative mt-12 md:mt-16 2xl:mt-28 bg-roadmap-bg bg-cover bg-center flex flex-col lg:flex-row justify-center md:px-8 3xl:px-[305px] font-clash py-16 lg:py-32"
+        >
+          <div
+            class="flex flex-col justify-center gap-16 3xl:gap-40 flex-1 lg:-mt-[200px] 2xl:-mt-[270px]"
+          >
+            <!-- January  -->
+            <div
+              data-aos="fade-up"
+              data-aos-duration="500"
+              class="flex items-center w-full"
+            >
+              <div class="relative flex-1 max-w-[700px]">
+                <img
+                  src="../public/assets/images/Right.png"
+                  alt=""
+                  class="absolute top-0 right-0 h-full object-cover z-10"
+                />
+                <div
+                  class="w-full bg-white/5 border-[1.5px] border-[#ADADADB2] px-6 py-4 rounded-2xl"
+                >
+                  <h2
+                    class="text-center font-medium text-lg 2xl:text-xl mt-6 mb-2 text-white"
+                  >
+                    January
+                  </h2>
+                  <p
+                    class="font-semibold text-base 2xl:text-4xl mb-2 text-white"
+                  >
+                    Brief
+                  </p>
+                  <p class="text-sm 2xl:text-base text-gray-300">
+                    Lorem ipsum dolor sit amet consectetur. Elit massa erat
+                    vitae non semper quis. Morbi sed aliquet donec facilisis.
+                    Senectus eget.
+                  </p>
+                </div>
+              </div>
+              <div class="hidden lg:flex items-center ml-2">
+                <span class="text-white text-lg 2xl:text-xl"><----------</span>
+                <div
+                  class="w-4 h-4 2xl:w-6 2xl:h-6 bg-white rounded-full border-1 border-[#DA8F4D] -mr-2"
+                ></div>
+              </div>
+            </div>
+
+            <!-- March  -->
+            <div
+              data-aos="fade-up"
+              data-aos-duration="600"
+              class="flex items-center w-full"
+            >
+              <div class="relative flex-1 max-w-[700px]">
+                <img
+                  src="../public/assets/images/Right.png"
+                  alt=""
+                  class="absolute top-0 right-0 h-full object-cover z-10"
+                />
+                <div
+                  class="w-full bg-white/5 border-[1.5px] border-[#ADADADB2] px-6 py-4 rounded-2xl"
+                >
+                  <h2
+                    class="text-center font-medium text-lg 2xl:text-xl mt-6 mb-2 text-white"
+                  >
+                    March
+                  </h2>
+                  <p
+                    class="font-semibold text-base 2xl:text-4xl mb-2 text-white"
+                  >
+                    Discover
+                  </p>
+                  <p class="text-sm 2xl:text-base text-gray-300">
+                    Lorem ipsum dolor sit amet consectetur. Elit massa erat
+                    vitae non semper quis. Morbi sed aliquet donec facilisis.
+                    Senectus eget.
+                  </p>
+                </div>
+              </div>
+              <div class="hidden lg:flex items-center ml-2">
+                <span class="text-white text-lg 2xl:text-xl"><----------</span>
+                <div
+                  class="w-4 h-4 2xl:w-6 2xl:h-6 bg-white rounded-full border-1 border-[#DA8F4D] -mr-2"
+                ></div>
+              </div>
+            </div>
+
+            <!-- May  -->
+            <div
+              data-aos="fade-up"
+              data-aos-duration="700"
+              class="flex items-center w-full"
+            >
+              <div class="relative flex-1 max-w-[700px]">
+                <img
+                  src="../public/assets/images/Right.png"
+                  alt=""
+                  class="absolute top-0 right-0 h-full object-cover z-10"
+                />
+                <div
+                  class="w-full bg-white/5 border-[1.5px] border-[#ADADADB2] px-6 py-4 rounded-2xl"
+                >
+                  <h2
+                    class="text-center font-medium text-lg 2xl:text-xl mt-6 mb-2 text-white"
+                  >
+                    May
+                  </h2>
+                  <p
+                    class="font-semibold text-base 2xl:text-4xl mb-2 text-white"
+                  >
+                    Testing
+                  </p>
+                  <p class="text-sm 2xl:text-base text-gray-300">
+                    Lorem ipsum dolor sit amet consectetur. Elit massa erat
+                    vitae non semper quis. Morbi sed aliquet donec facilisis.
+                    Senectus eget.
+                  </p>
+                </div>
+              </div>
+              <div class="hidden lg:flex items-center ml-2">
+                <span class="text-white text-lg 2xl:text-xl"><----------</span>
+                <div
+                  class="w-4 h-4 2xl:w-6 2xl:h-6 bg-white rounded-full border-1 border-[#DA8F4D] -mr-2"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <!-- Line  -->
+          <div
+            class="hidden lg:block w-[2px] lg:h-[615px] xl:h-[570px] 2xl:h-screen 3xl:h-[890px] bg-gradient-to-b from-[rgba(228,223,206,0.7)] via-[rgba(230,187,39,0.7)] to-[rgba(230,187,39,0.7)]"
+          ></div>
+
+          <div
+            class="flex flex-col justify-center gap-16 3xl:gap-40 flex-1 mt-6"
+          >
+            <!-- February  -->
+            <div
+              data-aos="fade-up"
+              data-aos-duration="700"
+              class="flex items-center justify-end w-full"
+            >
+              <div class="hidden lg:flex items-center mr-2">
+                <div
+                  class="w-4 h-4 2xl:w-6 2xl:h-6 bg-[#DA8F4D] rounded-full border-2 border-white -ml-2"
+                ></div>
+                <span class="text-white text-lg 2xl:text-xl">----------></span>
+              </div>
+              <div class="relative flex-1 max-w-[700px]">
+                <img
+                  src="../public/assets/images/Left.png"
+                  alt=""
+                  class="absolute top-0 left-0 h-full object-cover z-10"
+                />
+                <div
+                  class="w-full bg-white/5 border-[1.5px] border-[#ADADADB2] px-6 py-4 rounded-2xl"
+                >
+                  <h2
+                    class="text-center font-medium text-lg 2xl:text-xl mt-6 mb-2 text-white"
+                  >
+                    February
+                  </h2>
+                  <p
+                    class="font-semibold text-base 2xl:text-4xl mb-2 text-white"
+                  >
+                    Research
+                  </p>
+                  <p class="text-sm 2xl:text-base text-gray-300">
+                    Lorem ipsum dolor sit amet consectetur. Elit massa erat
+                    vitae non semper quis. Morbi sed aliquet donec facilisis.
+                    Senectus eget.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- April  -->
+            <div
+              data-aos="fade-up"
+              data-aos-duration="800"
+              class="flex items-center justify-end w-full"
+            >
+              <div class="hidden lg:flex items-center mr-2">
+                <div
+                  class="w-4 h-4 2xl:w-6 2xl:h-6 bg-[#DA8F4D] rounded-full border-1 border-white -ml-2"
+                ></div>
+                <span class="text-white text-lg 2xl:text-xl">----------></span>
+              </div>
+              <div class="relative flex-1 max-w-[700px]">
+                <img
+                  src="../public/assets/images/Left.png"
+                  alt=""
+                  class="absolute top-0 left-0 h-full object-cover z-10"
+                />
+                <div
+                  class="w-full bg-white/5 border-[1.5px] border-[#ADADADB2] px-6 py-4 rounded-2xl"
+                >
+                  <h2
+                    class="text-center font-medium text-lg 2xl:text-xl mt-6 mb-2 text-white"
+                  >
+                    April
+                  </h2>
+                  <p
+                    class="font-semibold text-base 2xl:text-4xl mb-2 text-white"
+                  >
+                    Design
+                  </p>
+                  <p class="text-sm 2xl:text-base text-gray-300">
+                    Lorem ipsum dolor sit amet consectetur. Elit massa erat
+                    vitae non semper quis. Morbi sed aliquet donec facilisis.
+                    Senectus eget.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- June  -->
+            <div
+              data-aos="fade-up"
+              data-aos-duration="900"
+              class="flex items-center justify-end w-full"
+            >
+              <div class="hidden lg:flex items-center mr-2">
+                <div
+                  class="w-4 h-4 2xl:w-6 2xl:h-6 bg-[#DA8F4D] rounded-full border-1 border-white -ml-2"
+                ></div>
+                <span class="text-white text-lg 2xl:text-xl">----------></span>
+              </div>
+              <div class="relative flex-1 max-w-[700px]">
+                <img
+                  src="../public/assets/images/Left.png"
+                  alt=""
+                  class="absolute top-0 left-0 h-full object-cover z-10"
+                />
+                <div
+                  class="w-full bg-white/5 border-[1.5px] border-[#ADADADB2] px-6 py-4 rounded-2xl"
+                >
+                  <h2
+                    class="text-center font-medium text-lg 2xl:text-xl mt-6 mb-2 text-white"
+                  >
+                    June
+                  </h2>
+                  <p
+                    class="font-semibold text-base 2xl:text-4xl mb-2 text-white"
+                  >
+                    Launch and Feedback
+                  </p>
+                  <p class="text-sm 2xl:text-base text-gray-300">
+                    Lorem ipsum dolor sit amet consectetur. Elit massa erat
+                    vitae non semper quis. Morbi sed aliquet donec facilisis.
+                    Senectus eget.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section  -->
+    <section class="bg-black w-full h-full py-12">
+      <div class="container mx-auto">
+        <h1
+          data-aos="fade-up"
+          data-aos-duration="600"
+          class="text-4xl 2xl:text-[50.79px] text-center"
+        >
+          How It Works
+        </h1>
+        <!-- Work 1  -->
+        <div
+          class="mt-6 flex flex-col md:flex-row gap-8 gap-x-16 px-2 lg:px-12 3xl:px-28"
+        >
+          <div
+            class="md:w-1/2 h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden rounded-3xl"
+          >
+            <img
+              src="../public/assets/images/W1.png"
+              class="w-full h-full object-contain"
+              alt
+            />
+          </div>
+          <div
+            class="md:w-1/2 flex flex-col justify-center px-4 sm:px-0 leading-loose space-y-1 2xl:space-y-8"
+          >
+            <img
+              data-aos="fade-up"
+              data-aos-duration="600"
+              src="../public/assets/images/star.png"
+              alt
+              class="hidden md:block w-14 h-16 -ml-4"
+            />
+            <h3 class="text-2xl md:text-3xl 2xl:text-[59px] font-bold">
+              Setup and Connect
+            </h3>
+            <span class="text-2xl md:text-3xl 2xl:text-[59px] font-bold"
+              >your Wallet.</span
+            >
+            <p
+              data-aos="fade-up"
+              data-aos-duration="700"
+              class="xl:text[14.94px] mt-4 text-left leading-relaxed dark:text-gray-300 text-white text-wrap"
+            >
+              Lorem ipsum dolor sit amet consectetur. Donec vitae pellentesque
+              nunc ut sit a volutpat elementum. Nunc elit nisi pellentesque
+              porta elementum. Id mattis neque diam nulla. Amet et a felis
+              pellentesque sed odio.
+            </p>
+          </div>
+        </div>
+
+        <!-- Work 2  -->
+        <div
+          class="mt-6 flex flex-col md:flex-row gap-8 gap-x-16 px-2 lg:px-12 3xl:px-28"
+        >
+          <div
+            class="md:w-1/2 flex flex-col justify-center px-4 sm:px-0 leading-loose space-y-1 2xl:space-y-8"
+          >
+            <h3 class="text-2xl md:text-3xl 2xl:text-[59px] font-bold">
+              Create your Own
+            </h3>
+            <span class="text-2xl md:text-3xl 2xl:text-[59px] font-bold"
+              >Digital NFT.</span
+            >
+            <p
+              data-aos="fade-up"
+              data-aos-duration="600"
+              class="xl:text[14.94px] mt-4 text-left leading-relaxed dark:text-gray-300 text-white text-wrap"
+            >
+              Lorem ipsum dolor sit amet consectetur. Donec vitae pellentesque
+              nunc ut sit a volutpat elementum. Nunc elit nisi pellentesque
+              porta elementum. Id mattis neque diam nulla. Amet et a felis
+              pellentesque sed odio.
+            </p>
+          </div>
+
+          <div
+            class="md:w-1/2 h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden rounded-3xl"
+          >
+            <div
+              data-aos="fade-up"
+              data-aos-duration="700"
+              class="w-auto h-auto 2xl:h-[457px] 2xl:w-[531px] bg-[#D9D9D90F]"
+            >
+              <img
+                src="../public/assets/images/W2.png"
+                class="w-full h-full object-cover bg-center lg:object-contain"
+                alt
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Work 3  -->
+
+        <div
+          class="mt-6 flex flex-col md:flex-row gap-8 gap-x-16 px-2 lg:px-12 3xl:px-28"
+        >
+          <div
+            class="md:w-1/2 h-[300px] mt-12 sm:h-[400px] md:h-[500px] overflow-hidden rounded-3xl"
+          >
+            <img
+              data-aos="fade-up"
+              data-aos-duration="600"
+              src="../public/assets/images/W3.png"
+              class="w-full h-full object-contain"
+              alt
+            />
+          </div>
+          <div
+            class="md:w-1/2 flex flex-col justify-center px-4 sm:px-0 leading-loose space-y-1 2xl:space-y-8"
+          >
+            <h3 class="text-2xl md:text-3xl 2xl:text-[59px] font-bold">
+              Setup and Connect
+            </h3>
+            <span class="text-2xl md:text-3xl 2xl:text-[59px] font-bold"
+              >your Wallet.</span
+            >
+            <p
+              data-aos="fade-up"
+              data-aos-duration="700"
+              class="xl:text[14.94px] mt-4 text-left leading-relaxed dark:text-gray-300 text-white text-wrap"
+            >
+              Lorem ipsum dolor sit amet consectetur. Donec vitae pellentesque
+              nunc ut sit a volutpat elementum. Nunc elit nisi pellentesque
+              porta elementum. Id mattis neque diam nulla. Amet et a felis
+              pellentesque sed odio.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scroll to Top  -->
+    <div class="relative max-w-[1440px] mx-auto hidden md:block">
+      <button
+        id="scrollToTopBtn"
+        class="fixed bottom-4 right-4 px-5 py-3 bg-white text-black rounded-lg shadow-lg hover:bg-black hover:text-white transition-all duration-300 opacity-0 invisible transform translate-y-4"
+        aria-label="S"
+      >
+        <i class="fas fa-arrow-up"></i>
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="min-h-[477px] bg-footer-bg bg-cover bg-center w-full">
+      <div class="max-w-[1000px] mx-auto flex flex-col gap-12">
+        <h2
+          data-aos="fade-up"
+          data-aos-duration="600"
+          class="text-4xl lg:text-[59.76px] font-bold text-center pt-12 2xl:pt-24"
+        >
+          Join Our Community
+        </h2>
+        <p
+          data-aos="fade-up"
+          data-aos-duration="600"
+          class="max-w-[816px] mx-auto text-[12px] lg:text-[14px] text-center"
+        >
+          Lorem ipsum dolor sit amet consectetur. Donec vitae pellentesque nunc
+          ut sit a volutpat elementum. Nunc elit nisi pellentesque porta
+          elementum. Id mattis neque diam nulla. Amet et a felis pellentesque
+          sed odio.
+        </p>
+        <form
+          class="flex flex-col md:flex-row items-center max-w-[816px] mx-auto w-full gap-6 px-6"
+        >
+          <input
+            data-aos="fade-up"
+            data-aos-duration="600"
+            type="email"
+            placeholder="Your Email"
+            class="w-full rounded-[41px] px-10 py-2 2xl:py-6 bg-[#D9D9D9] text-[14px] lg:text-[17px]"
+          />
+          <button
+            data-aos="fade-up"
+            data-aos-duration="700"
+            class="bg-[#EFE7D78F] w-[120px] md:w-[210px] text-[14px] lg:text-[17px] border-[1.35px] border-[#EA9112] py-2 3xl:py-6 text-white rounded-[41px]"
+          >
+            Join Now
+          </button>
+        </form>
+        <div class="copy_right">
+          <p class="text-center text-[#CCCCCC] text-[16px]">
+            Ⓒ NFT Market. Use this template freely.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./menu.js"></script>
+    <script src="./scrollToTop.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>
