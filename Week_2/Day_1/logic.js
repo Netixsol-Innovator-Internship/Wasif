@@ -78,10 +78,18 @@ btn.addEventListener("click", () => {
     `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`
   );
   const today = new Date();
-  if (day > 31 || month > 12 || year > today.getFullYear()) {
+  if (
+    day <= 0 ||
+    day > 31 ||
+    month <= 0 ||
+    month > 12 ||
+    year <= 0 ||
+    year > today.getFullYear()
+  ) {
     invalidInput.classList.remove("hidden");
     return;
   }
+
   if (
     isNaN(inputDate.getTime()) ||
     inputDate.getDate() != parseInt(day) ||
