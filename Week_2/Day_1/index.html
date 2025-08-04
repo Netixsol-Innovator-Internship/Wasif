@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./output.css" rel="stylesheet" />
+    <title>Age Calculator</title>
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-700">
+    <main
+      class="h-screen w-full flex justify-center items-center bg-gray-100 font-poppins"
+    >
+      <section
+        name="box"
+        class="bg-white h-[450px] w-[550px] mx-auto drop-shadow-xl rounded-xl rounded-br-[80px] px-10"
+      >
+        <section name="form">
+          <form
+            class="w-[80%] flex items-center gap-x-7 text-gray-500 font-bold text-lg pt-7"
+          >
+            <div class="space-y-2">
+              <label id="label1" for="day" class="text-xs font-bold">DAY</label>
+              <input
+                id="day"
+                type="number"
+                placeholder="DD"
+                class="border-[1.5px] border-gray-200 w-24 rounded-[4px] p-2 placeholder:text-gray-400 focus:outline-gray-400 text-black"
+              />
+              <p id="ip1" class="text-[10px] text-red-500 text-nowrap hidden">This fiels is required</p>
+            </div>
+            <div class="space-y-2">
+              <label id="label2"  for="month" class="text-xs font-bold">MONTH</label>
+              <input
+                id="month"
+                type="number"
+                placeholder="MM"
+                class="border-[1.5px] border-gray-200 w-24 rounded-[4px] p-2 placeholder:text-gray-400 focus:outline-gray-400 text-black"
+              />
+              <p id="ip2" class="text-[10px] text-red-500 text-nowrap hidden ">This fiels is required</p>
+            </div>
+            <div class="space-y-2">
+              <label id="label3"  for="year" class="text-xs font-bold">YEAR</label>
+              <input
+                id="year"
+                type="number"
+                placeholder="YYYY"
+                class="border-[1.5px] border-gray-200 w-24 rounded-[4px] p-2 placeholder:text-gray-400 focus:outline-gray-400 text-black"
+              />
+              <p id="ip3" class="text-[10px] text-red-500 text-nowrap hidden">This fiels is required</p>
+            </div>
+          </form>
+          <p id="invalidInput" class="text-red-500 text-md font-bold text-center hidden">Invalid Input</p>
+        </section>
+        <section name="icon" class="w-full mt-4 flex items-center">
+          <hr class="flex-1 border-t border-gray-300" />
+          <button
+          id="btn"
+            class="bg-purple-500 rounded-full w-16 h-16 flex items-center shrink-0 hover:drop-shadow-2xl"
+          >
+            <img
+              src="./assets/icon-arrow.svg"
+              alt="svg"
+              class="w-8 h-8 mx-auto"
+            />
+          </button>
+        </section>
+        <section name="Output Box" class="text-6xl text-black font-extrabold space-y-2">
+            
+            <h1><em><span id="totalyears" class="text-purple-600">--</span> years</em></h1>
+            <h1><em><span id="totalmonths" class="text-purple-600">-- </span> months</em></h1>
+            <h1><em><span id="totaldays" class="text-purple-600">-- </span> days</em></h1>
+  
+        </section>
+      </section>
+    </main>
+    <script src="./logic.js"></script>
+  </body>
+</html>
