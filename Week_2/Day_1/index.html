@@ -9,59 +9,96 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link href="./output.css" rel="stylesheet" />
     <title>Age Calculator</title>
   </head>
-  <body class="bg-gray-100 dark:bg-gray-700">
+  <body class=" overflow-x-hidden overflow-y-auto">
     <main
-      class="h-screen w-full flex justify-center items-center bg-gray-100 font-poppins"
+      class="bg-gray-100 dark:bg-black h-screen w-full flex justify-center items-center font-poppins px-10 md:px-2"
     >
       <section
+      data-aos="zoom-in-up"
         name="box"
-        class="bg-white h-[450px] w-[550px] mx-auto drop-shadow-xl rounded-xl rounded-br-[80px] px-10"
+        class="bg-white dark:bg-[#181818] min-h-[410px] md:min-h-[450px] max-w-[550px] mx-auto drop-shadow-xl rounded-xl rounded-br-[80px] px-1 md:px-10 py-1"
       >
         <section name="form">
           <form
-            class="w-[80%] flex items-center gap-x-7 text-gray-500 font-bold text-lg pt-7"
+            class="max-w-[80%] flex items-center gap-x-1 md:gap-x-7 text-gray-500 font-bold text-lg pt-7"
           >
-            <div class="space-y-2">
+            <div
+            data-aos="fade-up"
+     data-aos-duration="400"
+            class="space-y-2">
               <label id="label1" for="day" class="text-xs font-bold">DAY</label>
               <input
                 id="day"
                 type="number"
                 placeholder="DD"
-                class="border-[1.5px] border-gray-200 w-24 rounded-[4px] p-2 placeholder:text-gray-400 focus:outline-gray-400 text-black"
+                class="border-[1.5px] border-gray-200 w-24 rounded-[4px] p-2 placeholder:text-gray-400 focus:outline-gray-400 text-black dark:text-white dark:bg-[#181818]"
               />
-              <p id="ip1" class="text-[10px] text-red-500 text-nowrap hidden">This fiels is required</p>
+              <p id="ip1" class="text-[8px] md:text-[10px] text-red-500 text-nowrap hidden">
+                This fiels is required
+              </p>
             </div>
-            <div class="space-y-2">
-              <label id="label2"  for="month" class="text-xs font-bold">MONTH</label>
+            <div
+            data-aos="fade-up"
+     data-aos-duration="500"
+            class="space-y-2">
+              <label id="label2" for="month" class="text-xs font-bold"
+                >MONTH</label
+              >
               <input
                 id="month"
                 type="number"
                 placeholder="MM"
-                class="border-[1.5px] border-gray-200 w-24 rounded-[4px] p-2 placeholder:text-gray-400 focus:outline-gray-400 text-black"
+                class="border-[1.5px] border-gray-200 w-24 rounded-[4px] p-2 placeholder:text-gray-400 focus:outline-gray-400 text-black dark:text-white dark:bg-[#181818]"
               />
-              <p id="ip2" class="text-[10px] text-red-500 text-nowrap hidden ">This fiels is required</p>
+              <p id="ip2" class="text-[8px] md:text-[10px] text-red-500 text-nowrap hidden">
+                This fiels is required
+              </p>
             </div>
-            <div class="space-y-2">
-              <label id="label3"  for="year" class="text-xs font-bold">YEAR</label>
+            <div 
+            data-aos="fade-up"
+     data-aos-duration="600"
+            class="space-y-2">
+              <label id="label3" for="year" class="text-xs font-bold"
+                >YEAR</label
+              >
               <input
                 id="year"
                 type="number"
                 placeholder="YYYY"
-                class="border-[1.5px] border-gray-200 w-24 rounded-[4px] p-2 placeholder:text-gray-400 focus:outline-gray-400 text-black"
+                class="border-[1.5px] border-gray-200 w-24 rounded-[4px] p-2 placeholder:text-gray-400 focus:outline-gray-400 text-black dark:text-white dark:bg-[#181818]"
               />
-              <p id="ip3" class="text-[10px] text-red-500 text-nowrap hidden">This fiels is required</p>
+              <p id="ip3" class="text-[8px] md:text-[10px] text-red-500 text-nowrap hidden">
+                This fiels is required
+              </p>
             </div>
           </form>
-          <p id="invalidInput" class="text-red-500 text-md font-bold text-center hidden">Invalid Input</p>
+          <p
+            id="invalidInput"
+            class="text-red-500 text-md font-bold text-center mt-2 hidden"
+          >
+            Invalid Input
+          </p>
         </section>
-        <section name="icon" class="w-full mt-4 flex items-center">
-          <hr class="flex-1 border-t border-gray-300" />
+        <section name="icon" class="w-full mt-4 relative py-10">
+          <hr
+          data-aos="fade-up"
+     data-aos-duration="700"
+          class=" border-t border-gray-300" />
           <button
-          id="btn"
-            class="bg-purple-500 rounded-full w-16 h-16 flex items-center shrink-0 hover:drop-shadow-2xl"
+            id="btn"
+            class="bg-[#8a2be2] rounded-full w-16 h-16 flex items-center hover:drop-shadow-2xl absolute  left-1/2 md:left-auto transform -translate-x-1/2 md:translate-x-0 md:right-0  -translate-y-1/2 "
           >
             <img
               src="./assets/icon-arrow.svg"
@@ -70,15 +107,38 @@
             />
           </button>
         </section>
-        <section name="Output Box" class="text-6xl text-black font-extrabold space-y-2">
-            
-            <h1><em><span id="totalyears" class="text-purple-600">--</span> years</em></h1>
-            <h1><em><span id="totalmonths" class="text-purple-600">-- </span> months</em></h1>
-            <h1><em><span id="totaldays" class="text-purple-600">-- </span> days</em></h1>
-  
+        <section
+        data-aos="fade-up"
+     data-aos-duration="700"
+          name="Output Box"
+          class= "text-4xl md:text-6xl text-black dark:text-white font-extrabold space-y-2"
+        >
+          <h1>
+            <em
+              ><span id="totalyears" class="text-[#8a2be2]">--</span> years</em
+            >
+          </h1>
+          <h1>
+            <em
+              ><span id="totalmonths" class="text-[#8a2be2]">-- </span>
+              months</em
+            >
+          </h1>
+          <h1>
+            <em><span id="totaldays" class="text-[#8a2be2]">-- </span> days</em>
+          </h1>
         </section>
+        <button
+          id="darkMode"
+          class="bg-[#8a2be2] w-12 h-10 flex rounded-sm rounded-br-3xl items-center shrink-0 hover:drop-shadow-2xl mt-[2px] md:mt-[0.5px]"
+        >
+          <i id="icon" class="fa-solid fa-moon text-black text-lg mx-auto"></i>
+        </button>
       </section>
     </main>
     <script src="./logic.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>

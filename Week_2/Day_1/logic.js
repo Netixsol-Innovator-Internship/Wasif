@@ -9,11 +9,27 @@ const label1 = document.getElementById("label1");
 const label2 = document.getElementById("label2");
 const label3 = document.getElementById("label3");
 const invalidInput = document.getElementById("invalidInput");
+const darkMode = document.getElementById("darkMode");
+const body = document.body;
+const icon = document.getElementById("icon");
+
+if (localStorage.getItem("darkMode") === "true") {
+  body.classList.add("dark");
+}
+
+darkMode.addEventListener("click", () => {
+  body.classList.toggle("dark");
+  localStorage.setItem("darkMode", body.classList.contains("dark"));
+  icon.classList.toggle("fa-moon");
+  icon.classList.toggle("fa-sun");
+  icon.classList.toggle("text-white");
+});
 
 btn.addEventListener("click", () => {
   ip1.classList.add("hidden");
   ip2.classList.add("hidden");
   ip3.classList.add("hidden");
+  invalidInput.classList.add("hidden");
 
   const daybox = document.getElementById("day");
   const monthbox = document.getElementById("month");
@@ -61,18 +77,23 @@ btn.addEventListener("click", () => {
   const inputDate = new Date(
     `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`
   );
-
+  const today = new Date();
+  if (day > 31 || month > 12 || year > today.getFullYear()) {
+    invalidInput.classList.remove("hidden");
+    return;
+  }
   if (
     isNaN(inputDate.getTime()) ||
     inputDate.getDate() != parseInt(day) ||
     inputDate.getMonth() + 1 != parseInt(month) ||
     inputDate.getFullYear() != parseInt(year)
   ) {
-    invalidInput.classList.remove("hidden")
+    ip1.classList.remove("hidden");
+    ip2.classList.remove("hidden");
+    ip3.classList.remove("hidden");
     return;
   }
 
-  const today = new Date();
   let years = today.getFullYear() - inputDate.getFullYear();
   let months = today.getMonth() - inputDate.getMonth();
   let days = today.getDate() - inputDate.getDate();
@@ -88,7 +109,24 @@ btn.addEventListener("click", () => {
     months += 12;
   }
 
-  totalYear.innerHTML = years;
-  totalMonth.innerHTML = months;
-  totalDay.innerHTML = days;
+  function animateCount(element, endValue, duration = 1000) {
+    let startValue = 0;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const value = Math.floor(progress * (endValue - startValue) + startValue);
+      element.innerText = value;
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  animateCount(totalYear, years, 1200);
+  animateCount(totalMonth, months, 1000);
+  animateCount(totalDay, days, 800);
 });
