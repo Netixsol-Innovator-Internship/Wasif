@@ -26,6 +26,7 @@ Styled scrollbars for a polished user experience (using Tailwind custom utilitie
 
 🖼️ Preview
 
+https://notification-panel-gray.vercel.app/
 
 
 🧰 Technologies Used
