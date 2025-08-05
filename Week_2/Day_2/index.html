@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="./output.css" rel="stylesheet" />
+    <title>Notification Page</title>
+  </head>
+  <body class="bg-gray-200  py-4 min-h-screen flex items-center justify-center custom-scrollbar">
+    <main
+      class="w-full flex justify-center items-center font-jakarta px-4 lg:px-0"
+    >
+      <section class="w-full md:w-[450px] lg:w-[650px] h-full bg-white rounded-3xl drop-shadow-xl py-2">
+        <header
+          class="w-full flex justify-between items-center text-blue-950 px-4 pt-4"
+        >
+          <div class="flex justify-between items-center gap-x-2">
+            <h1 class="font-extrabold text-lg">Notifications</h1>
+            <p
+              id="notiCounter"
+              class="bg-blue-950 text-white h-[22px] px-[7px] rounded-md font-semibold text-sm text-justify"
+            >
+              3
+            </p>
+          </div>
+          <div>
+            <button id="markAll" class="text-xs md:text-sm">Mark all as read</button>
+          </div>
+        </header>
+        <section class="pt-3">
+          <ul id="notiUl" class=" w-full px-4 space-y-1">
+
+          </ul>
+        </section>
+      </section>
+    </main>
+    <script src="./logic.js"></script>
+  </body>
+</html>

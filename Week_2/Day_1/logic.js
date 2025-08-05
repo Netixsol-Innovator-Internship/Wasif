@@ -15,101 +15,105 @@ const icon = document.getElementById("icon");
 
 if (localStorage.getItem("darkMode") === "true") {
   body.classList.add("dark");
+  icon.classList.add("fa-sun", "text-white");
+  icon.classList.remove("fa-moon");
 }
 
 darkMode.addEventListener("click", () => {
-  body.classList.toggle("dark");
-  localStorage.setItem("darkMode", body.classList.contains("dark"));
+  const isDark = body.classList.toggle("dark");
+  localStorage.setItem("darkMode", isDark);
   icon.classList.toggle("fa-moon");
   icon.classList.toggle("fa-sun");
   icon.classList.toggle("text-white");
 });
 
 btn.addEventListener("click", () => {
-  ip1.classList.add("hidden");
-  ip2.classList.add("hidden");
-  ip3.classList.add("hidden");
-  invalidInput.classList.add("hidden");
+  [ip1, ip2, ip3, invalidInput].forEach(el => el.classList.add("hidden"));
+  [label1, label2, label3].forEach(label => label.classList.remove("text-red-500"));
+  ["day", "month", "year"].forEach(id => {
+    document.getElementById(id).classList.remove("border-red-500");
+  });
 
-  const daybox = document.getElementById("day");
-  const monthbox = document.getElementById("month");
-  const yearbox = document.getElementById("year");
-  const day = document.getElementById("day").value;
-  const month = document.getElementById("month").value;
-  const year = document.getElementById("year").value;
-
-  label1.classList.remove("text-red-500");
-  label2.classList.remove("text-red-500");
-  label3.classList.remove("text-red-500");
-
-  daybox.classList.remove("border-red-500");
-  monthbox.classList.remove("border-red-500");
-  yearbox.classList.remove("border-red-500");
+  const day = document.getElementById("day").value.trim();
+  const month = document.getElementById("month").value.trim();
+  const year = document.getElementById("year").value.trim();
 
   let hasError = false;
 
   if (!day) {
     ip1.classList.remove("hidden");
     label1.classList.add("text-red-500");
-    daybox.classList.add("border-red-500");
+    document.getElementById("day").classList.add("border-red-500");
     hasError = true;
   }
+
   if (!month) {
     ip2.classList.remove("hidden");
     label2.classList.add("text-red-500");
-    monthbox.classList.add("border-red-500");
+    document.getElementById("month").classList.add("border-red-500");
     hasError = true;
   }
+
   if (!year) {
     ip3.classList.remove("hidden");
     label3.classList.add("text-red-500");
-    yearbox.classList.add("border-red-500");
+    document.getElementById("year").classList.add("border-red-500");
     hasError = true;
   }
 
-  if (hasError) {
-    return;
-  } else {
-    label1.classList.remove("text-red-500");
-    daybox.classList.remove("border-red-500");
-  }
+  if (hasError) return;
 
-  const inputDate = new Date(
-    `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`
-  );
   const today = new Date();
-  if (
-    day <= 0 ||
-    day > 31 ||
-    month <= 0 ||
-    month > 12 ||
-    year <= 0 ||
-    year > today.getFullYear()
-  ) {
+  const d = parseInt(day, 10);
+  const m = parseInt(month, 10);
+  const y = parseInt(year, 10);
+
+  const emonths = [4, 6, 9, 11];
+
+  if (d <= 0 || d > 31 || m <= 0 || m > 12 || y <= 0 || y > today.getFullYear()) {
+    invalidInput.innerText = "Invalid date entered.";
     invalidInput.classList.remove("hidden");
     return;
   }
 
-  if (
-    isNaN(inputDate.getTime()) ||
-    inputDate.getDate() != parseInt(day) ||
-    inputDate.getMonth() + 1 != parseInt(month) ||
-    inputDate.getFullYear() != parseInt(year)
-  ) {
-    ip1.classList.remove("hidden");
-    ip2.classList.remove("hidden");
-    ip3.classList.remove("hidden");
+  if (emonths.includes(m) && d > 30) {
+    invalidInput.innerText = "This month has only 30 days.";
+    invalidInput.classList.remove("hidden");
     return;
   }
 
-  let years = today.getFullYear() - inputDate.getFullYear();
-  let months = today.getMonth() - inputDate.getMonth();
-  let days = today.getDate() - inputDate.getDate();
+  if (m === 2) {
+    const isLeap = (y % 4 === 0 && y % 100 !== 0) || (y % 400 === 0);
+    const maxFebDays = isLeap ? 29 : 28;
+    if (d > maxFebDays) {
+      invalidInput.innerText = `February ${y} has only ${maxFebDays} days.`;
+      invalidInput.classList.remove("hidden");
+      return;
+    }
+  }
+
+  // Parse and check date validity
+  const inputDate = new Date(`${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`);
+  if (
+    isNaN(inputDate.getTime()) ||
+    inputDate.getDate() !== d ||
+    inputDate.getMonth() + 1 !== m ||
+    inputDate.getFullYear() !== y
+  ) {
+    invalidInput.innerText = "Invalid date format.";
+    invalidInput.classList.remove("hidden");
+    return;
+  }
+
+  // Calculate difference
+  let years = today.getFullYear() - y;
+  let months = today.getMonth() - (m - 1);
+  let days = today.getDate() - d;
 
   if (days < 0) {
     months--;
-    const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
-    days += lastMonth.getDate();
+    const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+    days += prevMonth.getDate();
   }
 
   if (months < 0) {
@@ -117,6 +121,7 @@ btn.addEventListener("click", () => {
     months += 12;
   }
 
+  // Animate count
   function animateCount(element, endValue, duration = 1000) {
     let startValue = 0;
     const startTime = performance.now();
@@ -126,9 +131,7 @@ btn.addEventListener("click", () => {
       const progress = Math.min(elapsed / duration, 1);
       const value = Math.floor(progress * (endValue - startValue) + startValue);
       element.innerText = value;
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      }
+      if (progress < 1) requestAnimationFrame(update);
     }
 
     requestAnimationFrame(update);
