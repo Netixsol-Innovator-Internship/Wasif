@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+    />
+    <link href="./output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="slider.css" />
+    <title>Order.uK</title>
+  </head>
+  <body class="font-poppins">
+    <div class="container mx-auto">
+      <header
+        class="flex justify-between gap-x-3 md:gap-x-0 py-3 2xl:py-5 px-5 md:px-10 xl:px-24 text-xs lg:text-base 2xl:text-lg items-center"
+      >
+        <div>
+          <img src="./assets/Logo.png" alt="Logo" />
+        </div>
+        <ul
+          id="navbar"
+          class="hidden md:flex justify-between gap-x-10 2xl:gap-x-20"
+        ></ul>
+        <button id="show-cart-button" class="flex items-center gap-x-2">
+          <div
+            class="w-9 h-9 2xl:h-14 2xl:w-14 bg-blue-950 flex justify-center items-center rounded-full"
+          >
+            <img src="./assets/cart.png" alt="" class="w-4 h-4" />
+          </div>
+          <p>Cart</p>
+        </button>
+      </header>
+    </div>
+    <!-- Landing Section  -->
+    <section
+      class="relative w-[85%] lg:w-[950px] xl:w-[1250px] lg:h-[350px] 3xl:w-[1528px] 3xl:h-[477px] flex justify-center items-center mx-auto py-4 mt-8 px-5"
+    >
+      <div class="absolute inset-0 w-full h-full">
+        <img
+          src="./assets/landing.png"
+          alt="Landing Background"
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <div class="absolute inset-0 w-full h-full bg-[#03081FE5]/90"></div>
+
+      <div
+        class="relative z-10 h-full flex flex-col md:flex-row items-center justify-center gap-x-28 gap-y-3 text-white"
+      >
+        <div class="flex flex-col gap-y-6 mt-10 lg:mt-16">
+          <p class="text-xl">I'm lovin'it!</p>
+          <h1 class="text-4xl 3xl:text-6xl">McDonald’s East London</h1>
+          <div
+            class="flex items-center gap-x-4 text-[10px] xl:text-base 2xl:text-xl"
+          >
+            <button
+              class="rounded-[30px] border-2 border-white hidden md:flex items-center gap-x-3 px-2 xl:px-5 py-1 2xl:py-2"
+            >
+              <img
+                src="./assets/Order Completed.png"
+                alt=""
+                class="w-3 lg:w-8 h-3 lg:h-8"
+              />
+              <p>Minimum Order: 12 GBP</p>
+            </button>
+            <button
+              class="rounded-[30px] border-2 border-white hidden md:flex items-center gap-x-3 px-2 xl:px-5 py-1 2xl:py-2"
+            >
+              <img
+                src="./assets/Motocross.png"
+                alt=""
+                class="w-3 lg:w-8 h-3 lg:h-8"
+              />
+              <p>Delivery in 20-25 Minutes</p>
+            </button>
+          </div>
+        </div>
+        <div class="w-[200px] md:w-[300px] lg:w-[400px] 3xl:h-auto 3xl:w-auto">
+          <img src="./assets/landing.png" alt="" />
+          <img
+            src="./assets/reviews.png"
+            alt=""
+            class="-mt-12 -ml-8 lg:-mt-20 lg:-ml-12 3xl:-mt-36 3xl:-ml-16 w-12 lg:w-20 3xl:w-auto 3xl:h-auto"
+          />
+        </div>
+      </div>
+      <div
+        class="bg-orange-yellow absolute -bottom-4 lg:-bottom-2 left-0 text-white flex justify-between gap-x-4 rounded-lg px-6 xl:px-12 py-1 xl:py-3"
+      >
+        <img src="./assets/Clock.png" alt="" class="w-4 lg:w-7 h-4 lg:h-7" />
+        <p class="text-xs lg:text-xl">Open until 3:00 AM</p>
+      </div>
+    </section>
+    <section
+      class="flex flex-col md:flex-row justify-between items-center w-[85%] lg:w-[950px] xl:w-[1250px] 3xl:w-[1528px] mx-auto mt-8 px-5"
+    >
+      <p class="text-black font-bold text-lg lg:text-2xl">
+        All Offers from McDonald’s East London
+      </p>
+      <div
+        class="w-auto md:w-[280px] lg:h-10 border-2 rounded-3xl flex flex-row items-center justify-start gap-x-2 md:gap-x-4 px-2 py-3"
+      >
+        <img src="./assets/Search More.png" alt="" class="w-5 h-5" />
+        <input
+          type="text"
+          class="focus:border-none focus:outline-none text-xs xl:text-base placeholder:text-xs"
+          placeholder="Search from menu..."
+        />
+      </div>
+    </section>
+    <section
+      class="w-full py-2 md:py-4 bg-orange-yellow px-2 md:px-10 2xl:px-28 mt-10"
+    >
+      <div class="container mx-auto">
+        <ul
+          id="menu-list"
+          class="flex flex-wrap justify-center gap-2 md:justify-between p-2 font-semibold text-white text-[12px] xl:text-base"
+        ></ul>
+      </div>
+    </section>
+    <!-- Burger Section  -->
+    <div class="container mx-auto">
+      <section class="w-full h-full text-black mt-12 px-4 md:px-16">
+        <h1 class="text-xl md:text-3xl 2xl:text-[44px] font-bold">Burgers</h1>
+        <div
+          id="burger-section"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 gap-x-4 gap-y-10"
+        ></div>
+      </section>
+    </div>
+    <!-- Fries Section  -->
+    <div class="container mx-auto">
+      <section class="w-full h-full text-black mt-12 px-4 md:px-16">
+        <h1
+          class="text-xl md:text-3xl 2xl:text-[44px] font-bold text-orange-yellow"
+        >
+          Fries
+        </h1>
+        <div
+          id="fries-section"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 gap-x-4 gap-y-10"
+        ></div>
+      </section>
+    </div>
+    <!-- Cold Drik Section  -->
+    <div class="container mx-auto">
+      <section class="w-full h-full text-black mt-12 px-4 md:px-16">
+        <h1
+          class="text-xl md:text-3xl 2xl:text-[44px] font-bold text-orange-yellow"
+        >
+          Cold Drinks
+        </h1>
+        <div
+          id="drinks-section"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 gap-x-4 gap-y-10"
+        ></div>
+      </section>
+    </div>
+
+    <!-- Slider  -->
+
+    <section class="py-2 lg:py-12 bg-[#D9D9D9] h-full lg:h-[500px] 2xl:h-[600px] mt-16">
+      <div class="container mx-auto px-4">
+        <!-- Header + Arrows -->
+        <div class="flex justify-between items-center mb-12 pt-2 lg:pt-5">
+          <h2 class="text-3xl font-bold">Customer Reviews</h2>
+          <!-- <div class="space-x-2 flex">
+            <button
+              type="button"
+              class="slick-prev h-8 w-8 rounded-full bg-[#FFB800] hidden md:flex items-center justify-center text-white"
+            >
+              <i class="fa-solid fa-angle-left"></i>
+            </button>
+            <button
+              type="button"
+              class="slick-next h-8 w-8 rounded-full bg-[#FFB800] hidden md:flex justify-center text-white"
+            >
+              <i class="fa-solid fa-angle-right"></i>
+            </button>
+          </div> -->
+        </div>
+
+        <!-- Reviews Slider -->
+        <div class="autoplay reviews-slider">
+          <!-- Card 1 -->
+          <div class="px-1 md:px-2">
+            <div
+              class="bg-white p-6 rounded-lg shadow-md 3xl:w-[496px] 3xl:h-[274px]"
+            >
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                  <img
+                    src="./assets/sliderimage.png"
+                    alt="Reviewer"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div
+                  class="flex justify-between gap-x-8 w-full text-xs md:text-sm"
+                >
+                  <div class="border-l-2 border-orange-yellow pl-2">
+                    <h4 class="font-bold">St Glx</h4>
+                    <p class="text-sm text-orange-yellow mb-2">South London</p>
+                  </div>
+                  <div class="ml-auto text-right text-orange-yellow">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <p class="text-xs text-gray-500">24th September, 2023</p>
+                  </div>
+                </div>
+              </div>
+              <p class="text-gray-800 text-xs md:text-sm leading-relaxed">
+                The positive aspect was undoubtedly the efficiency of the
+                service. The queue moved quickly, the staff was friendly, and
+                the food was up to the usual McDonald's standard – hot and
+                satisfying.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="px-1 md:px-2">
+            <div
+              class="bg-white p-6 rounded-lg shadow-md 3xl:w-[496px] 3xl:h-[274px]"
+            >
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                  <img
+                    src="./assets/sliderimage.png"
+                    alt="Reviewer"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div
+                  class="flex justify-between gap-x-8 w-full text-xs md:text-sm"
+                >
+                  <div class="border-l-2 border-orange-yellow pl-2">
+                    <h4 class="font-bold">St Glx</h4>
+                    <p class="text-sm text-orange-yellow mb-2">South London</p>
+                  </div>
+                  <div class="ml-auto text-right text-orange-yellow">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <p class="text-xs text-gray-500">24th September, 2023</p>
+                  </div>
+                </div>
+              </div>
+              <p class="text-gray-800 text-xs md:text-sm leading-relaxed">
+                The positive aspect was undoubtedly the efficiency of the
+                service. The queue moved quickly, the staff was friendly, and
+                the food was up to the usual McDonald's standard – hot and
+                satisfying.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="px-1 md:px-2">
+            <div
+              class="bg-white p-6 rounded-lg shadow-md 3xl:w-[496px] 3xl:h-[274px]"
+            >
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                  <img
+                    src="./assets/sliderimage.png"
+                    alt="Reviewer"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div
+                  class="flex justify-between gap-x-8 w-full text-xs md:text-sm"
+                >
+                  <div class="border-l-2 border-orange-yellow pl-2">
+                    <h4 class="font-bold">St Glx</h4>
+                    <p class="text-sm text-orange-yellow mb-2">South London</p>
+                  </div>
+                  <div class="ml-auto text-right text-orange-yellow">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <p class="text-xs text-gray-500">24th September, 2023</p>
+                  </div>
+                </div>
+              </div>
+              <p class="text-gray-800 text-xs md:text-sm leading-relaxed">
+                The positive aspect was undoubtedly the efficiency of the
+                service. The queue moved quickly, the staff was friendly, and
+                the food was up to the usual McDonald's standard – hot and
+                satisfying.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="px-1 md:px-2">
+            <div
+              class="bg-white p-6 rounded-lg shadow-md 3xl:w-[496px] 3xl:h-[274px]"
+            >
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                  <img
+                    src="./assets/sliderimage.png"
+                    alt="Reviewer"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div
+                  class="flex justify-between gap-x-8 w-full text-xs md:text-sm"
+                >
+                  <div class="border-l-2 border-orange-yellow pl-2">
+                    <h4 class="font-bold">St Glx</h4>
+                    <p class="text-sm text-orange-yellow mb-2">South London</p>
+                  </div>
+                  <div class="ml-auto text-right text-orange-yellow">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <p class="text-xs text-gray-500">24th September, 2023</p>
+                  </div>
+                </div>
+              </div>
+              <p class="text-gray-800 text-xs md:text-sm leading-relaxed">
+                The positive aspect was undoubtedly the efficiency of the
+                service. The queue moved quickly, the staff was friendly, and
+                the food was up to the usual McDonald's standard – hot and
+                satisfying.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="w-full flex justify-center mt-6 -mb-10 md:-mb-16 lg:-mb-1 lg:mt-16 2xl:mt-24 h-16 md:h-[100px] 2xl:w-[153px] 2xl:h-[178px]"
+        >
+          <img src="./assets/reviews.png" alt="" class=" " />
+        </div>
+      </div>
+    </section>
+
+    <!-- Restraunt Section  -->
+    <div class="container mx-auto py-20">
+      <section class="px-6 md:px-12 lg:px-24 py-8">
+        <h2 class="text-xl md:text-3xl 2xl:text-[44px] font-bold mb-6">
+          Similar Restaurants
+        </h2>
+        <div class="flex flex-wrap justify-between gap-3 pt-10">
+          <!-- Restaurant Cards -->
+          <div
+            class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md"
+          >
+            <img
+              src="./assets/mac.png"
+              alt="McDonald's London"
+              class="w-full h-full object-contain"
+            />
+            <p
+              class="bg-orange-500 text-white text-center text-[9px] font-semibold md:text-xs py-1 lg:py-2 xl:py-4 w-full"
+            >
+              McDonald's London
+            </p>
+          </div>
+
+          <div
+            class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md"
+          >
+            <img
+              src="./assets/papajhons.png"
+              alt="Papa Johns"
+              class="w-full h-full object-contain"
+            />
+            <p
+              class="bg-orange-500 text-white text-center text-[10px] font-semibold md:text-xs py-1 lg:py-2 xl:py-4 w-full"
+            >
+              Papa Johns
+            </p>
+          </div>
+
+          <div
+            class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md"
+          >
+            <img
+              src="./assets/kfc.png"
+              alt="KFC West London"
+              class="w-full h-full object-contain"
+            />
+            <p
+              class="bg-orange-500 text-white text-center text-[10px] font-semibold md:text-xs py-1 lg:py-2 xl:py-4 w-full"
+            >
+              KFC West London
+            </p>
+          </div>
+
+          <div
+            class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md"
+          >
+            <img
+              src="./assets/texas.png"
+              alt="Texas Chicken"
+              class="w-full h-full object-contain"
+            />
+            <p
+              class="bg-orange-500 text-white text-center text-[10px] font-semibold md:text-xs py-1 lg:py-2 xl:py-4 w-full"
+            >
+              Texas Chicken
+            </p>
+          </div>
+
+          <div
+            class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md"
+          >
+            <img
+              src="./assets/BK.png"
+              alt="Burger King"
+              class="w-full h-full object-contain"
+            />
+            <p
+              class="bg-orange-500 text-white text-center text-[10px] font-semibold md:text-xs py-1 lg:py-2 xl:py-4 w-full"
+            >
+              Burger King
+            </p>
+          </div>
+
+          <div
+            class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md"
+          >
+            <img
+              src="./assets/shuarma.png"
+              alt="Shaurma 1"
+              class="w-full h-full object-contain"
+            />
+            <p
+              class="bg-orange-500 text-white text-center text-[10px] font-semibold md:text-xs py-1 lg:py-2 xl:py-4 w-full"
+            >
+              Shaurma 1
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer  -->
+    <footer class="w-full">
+      <div class="bg-[#D9D9D9] bg-opacity-60 pt-8 md:pt-12 mx-auto">
+        <div class="container mx-auto px-4 pb-6 md:pb-8">
+          <!-- Mobile: Single column, Desktop: 4 columns -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+          >
+            <!-- Column 1: Logo & App Buttons -->
+            <div class="flex flex-col items-center md:items-start">
+              <div class="logo">
+                <img
+                  src="./assets/LOGO 2.png"
+                  class="w-[160px] xl:w-[200px] 2xl:w-[268px]"
+                  alt="Company Logo"
+                />
+              </div>
+              <div class="btns flex gap-3 md:gap-4 mt-6 md:mt-8">
+                <button
+                  class="w-[100px] 2xl:w-[178px] h-[45px] md:h-[50px] rounded-sm bg-black flex items-center justify-center"
+                >
+                  <img
+                    src="./assets/appstore.png"
+                    class="object-contain h-[60%] md:h-full"
+                    alt="Download on App Store"
+                  />
+                </button>
+                <button
+                  class="w-[100px] 2xl:w-[178px] h-[45px] md:h-[50px] bg-black rounded-sm flex items-center justify-center"
+                >
+                  <img
+                    src="./assets/playstore.png"
+                    class="object-contain h-[60%] md:h-full"
+                    alt="Get on Google Play"
+                  />
+                </button>
+              </div>
+              <p
+                class="text-xs md:text-sm mt-4 md:mt-6 text-center md:text-left max-w-[280px] md:max-w-[311px]"
+              >
+                Company # 490039-445, Registered with House of companies.
+              </p>
+            </div>
+
+            <!-- Column 2: Newsletter -->
+            <div class="mt-6 md:mt-0">
+              <h4 class="text-base md:text-lg font-bold mb-3 md:mb-4">
+                Get Exclusive Deals in your inbox
+              </h4>
+              <form
+                class="flex h-[40px] 2xl:h-[59px] rounded-full overflow-hidden bg-[#D9D9D9] w-auto"
+              >
+                <input
+                  type="email"
+                  placeholder="youremail@gmail.com"
+                  required
+                  class="bg-[#D9D9D9] px-4 xl:px-6 w-full border-none outline-none text-xs 2xl:text-base"
+                />
+                <button
+                  class="text-xs 2xl:text-base rounded-full font-medium h-full w-[100px] lg:w-[80px] 2xl:w-[171px] bg-orange-yellow text-white shrink-0"
+                >
+                  Subscribe
+                </button>
+              </form>
+              <p class="text-xs mt-2 md:mt-2">
+                we won't spam, read our
+                <a href="#" class="underline">email policy</a>
+              </p>
+              <div class="flex gap-3 md:gap-4 mt-3 md:mt-4">
+                <img
+                  src="./assets/Facebook.png"
+                  alt="Facebook"
+                  class="h-8 w-8 md:h-10 md:w-10"
+                />
+                <img
+                  src="./assets/Instagram.png"
+                  alt="Instagram"
+                  class="h-8 w-8 md:h-10 md:w-10"
+                />
+                <img
+                  src="./assets/TikTok.png"
+                  alt="TikTok"
+                  class="h-8 w-8 md:h-10 md:w-10"
+                />
+                <img
+                  src="./assets/Snapchat.png"
+                  alt="Snapchat"
+                  class="h-8 w-8 md:h-10 md:w-10"
+                />
+              </div>
+            </div>
+
+            <!-- Column 3: Legal Pages -->
+            <div class="mt-6 md:mt-0">
+              <h4 class="text-base md:text-lg font-bold mb-3 md:mb-4">
+                Legal Pages
+              </h4>
+              <ul class="space-y-1 md:space-y-2">
+                <li>
+                  <a
+                    href="#"
+                    class="text-xs md:text-sm underline hover:no-underline"
+                    >Terms and conditions</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-xs md:text-sm underline hover:no-underline"
+                    >Privacy</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-xs md:text-sm underline hover:no-underline"
+                    >Cookies</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-xs md:text-sm underline hover:no-underline"
+                    >Modern Slavery Statement</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Column 4: Important Links -->
+            <div class="mt-6 md:mt-0">
+              <h4 class="text-base md:text-lg font-bold mb-3 md:mb-4">
+                Important Links
+              </h4>
+              <ul class="space-y-1 md:space-y-2">
+                <li>
+                  <a
+                    href="#"
+                    class="text-xs md:text-sm underline hover:no-underline"
+                    >Get Help</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-xs md:text-sm underline hover:no-underline"
+                    >Add your restaurant</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-xs md:text-sm underline hover:no-underline"
+                    >Sign up to deliver</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-xs md:text-sm underline hover:no-underline"
+                    >Create a business account</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="w-full bg-[#03081F] py-3 md:py-4">
+          <div class="container mx-auto px-4 text-white">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+              <p class="text-xs md:text-sm mb-2 md:mb-0">
+                Order.uk Copyright 2025, All Rights Reserved
+              </p>
+              <ul class="flex flex-wrap gap-2 md:gap-4 text-xs md:text-sm">
+                <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+                <li><a href="#" class="hover:underline">Terms</a></li>
+                <li><a href="#" class="hover:underline">Pricing</a></li>
+                <li>
+                  <a href="#" class="hover:underline"
+                    >Do not sell or share my personal information</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Cart  -->
+
+    <div id="cart-modal" class="hidden max-w-3xl h-screen mx-auto bg-white p-6 rounded-xl shadow-lg space-y-4 relative">
+      <div class="absolute -top-1 right-0">
+        <button id="cart-toggle" class="bg-orange-yellow text-white font-extrabold py-1 px-[10px] rounded-full">x</button>
+      </div>
+      <div>
+        <img src="./assets/cartImage.png" alt="">
+      </div>
+  <h2 class="text-xl font-bold">Your Order</h2>
+  <div id="cart-items" class="space-y-4"></div>
+  <div class="flex justify-between items-center border-t pt-4">
+    <p class="font-semibold text-lg">Total to pay: <span id="cart-total" class="text-orange-500">£0.00</span></p>
+    <div class="space-x-2">
+      <button class="underline text-sm">Take me back</button>
+      <button class="bg-green-600 text-white px-4 py-2 rounded">Next Step</button>
+    </div>
+  </div>
+</div>
+
+
+    <!-- JS Section  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+      $(".reviews-slider").slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        arrows: true,
+        prevArrow: $(".slick-prev"),
+        nextArrow: $(".slick-next"),
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+            },
+          },
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+            },
+          },
+        ],
+      });
+    </script>
+    <script src="./menuList.js"></script>
+    <script src="./products.js"></script>
+    <script src="./navbar.js"></script>
+    <script src="./cart.js"></script>
+  </body>
+</html>

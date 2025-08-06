@@ -4,5 +4,6 @@
   },
   "scripts": {
     "build": "tailwindcss -i ./input.css -o ./output.css"
+    
   }
 }
