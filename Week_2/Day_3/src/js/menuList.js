@@ -44,3 +44,4 @@ function populateMenu() {
 
 
 document.addEventListener('DOMContentLoaded', populateMenu);
+

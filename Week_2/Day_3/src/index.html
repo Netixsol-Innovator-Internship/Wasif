@@ -10,6 +10,11 @@
     <link
       rel="stylesheet"
       type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
     />
     <link
@@ -25,29 +30,51 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
     />
     <link href="./output.css" rel="stylesheet" />
-    <link rel="stylesheet" href="slider.css" />
     <title>Order.uK</title>
   </head>
   <body class="font-poppins">
     <div class="container mx-auto">
+      <!-- Header -->
+
       <header
-        class="flex justify-between gap-x-3 md:gap-x-0 py-3 2xl:py-5 px-5 md:px-10 xl:px-24 text-xs lg:text-base 2xl:text-lg items-center"
+        class="flex justify-between gap-x-3 md:gap-x-0 py-3 2xl:py-5 px-5 md:px-10 xl:px-24 text-xs lg:text-base 2xl:text-lg items-center relative"
       >
+        <!-- Logo -->
         <div>
-          <img src="./assets/Logo.png" alt="Logo" />
+          <img src="../assets/Logo.png" alt="Logo" />
         </div>
+
+        <!-- Desktop Navbar -->
         <ul
           id="navbar"
-          class="hidden md:flex justify-between gap-x-10 2xl:gap-x-20"
+          class="hidden lg:flex justify-between gap-x-10 2xl:gap-x-20"
         ></ul>
-        <button id="show-cart-button" class="flex items-center gap-x-2">
-          <div
-            class="w-9 h-9 2xl:h-14 2xl:w-14 bg-blue-950 flex justify-center items-center rounded-full"
+        <div class="gap-x-3 flex items-center">
+          <!-- Mobile Menu Icon -->
+          <button id="menu-toggle" class="lg:hidden text-2xl ml-4">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <!-- Mobile Menu -->
+          <ul
+            id="navbar"
+            class="mobile-menu absolute top-full left-0 w-full bg-white shadow-md text-black px-5 py-4 space-y-3 text-base font-medium hidden lg:hidden z-50"
           >
-            <img src="./assets/cart.png" alt="" class="w-4 h-4" />
-          </div>
-          <p>Cart</p>
-        </button>
+            <li><a href="#" class="block hover:text-[#FFB800]">Home</a></li>
+            <li><a href="#" class="block hover:text-[#FFB800]">Shop</a></li>
+            <li><a href="#" class="block hover:text-[#FFB800]">About</a></li>
+            <li><a href="#" class="block hover:text-[#FFB800]">Contact</a></li>
+          </ul>
+          <!-- Cart Button -->
+          <button id="show-cart-button" class="flex items-center gap-x-2">
+            <div
+              class="w-9 h-9 2xl:h-14 2xl:w-14 bg-blue-950 flex justify-center items-center rounded-full"
+            >
+              <img src="../assets/cart.png" alt="cart" class="w-4 h-4" />
+            </div>
+            <p>Cart</p>
+          </button>
+        </div>
       </header>
     </div>
     <!-- Landing Section  -->
@@ -56,7 +83,7 @@
     >
       <div class="absolute inset-0 w-full h-full">
         <img
-          src="./assets/landing.png"
+          src="../assets/landing.png"
           alt="Landing Background"
           class="w-full h-full object-cover"
         />
@@ -77,7 +104,7 @@
               class="rounded-[30px] border-2 border-white hidden md:flex items-center gap-x-3 px-2 xl:px-5 py-1 2xl:py-2"
             >
               <img
-                src="./assets/Order Completed.png"
+                src="../assets/Order Completed.png"
                 alt=""
                 class="w-3 lg:w-8 h-3 lg:h-8"
               />
@@ -87,7 +114,7 @@
               class="rounded-[30px] border-2 border-white hidden md:flex items-center gap-x-3 px-2 xl:px-5 py-1 2xl:py-2"
             >
               <img
-                src="./assets/Motocross.png"
+                src="../assets/Motocross.png"
                 alt=""
                 class="w-3 lg:w-8 h-3 lg:h-8"
               />
@@ -96,9 +123,9 @@
           </div>
         </div>
         <div class="w-[200px] md:w-[300px] lg:w-[400px] 3xl:h-auto 3xl:w-auto">
-          <img src="./assets/landing.png" alt="" />
+          <img src="../assets/landing.png" alt="" />
           <img
-            src="./assets/reviews.png"
+            src="../assets/reviews.png"
             alt=""
             class="-mt-12 -ml-8 lg:-mt-20 lg:-ml-12 3xl:-mt-36 3xl:-ml-16 w-12 lg:w-20 3xl:w-auto 3xl:h-auto"
           />
@@ -107,7 +134,7 @@
       <div
         class="bg-orange-yellow absolute -bottom-4 lg:-bottom-2 left-0 text-white flex justify-between gap-x-4 rounded-lg px-6 xl:px-12 py-1 xl:py-3"
       >
-        <img src="./assets/Clock.png" alt="" class="w-4 lg:w-7 h-4 lg:h-7" />
+        <img src="../assets/Clock.png" alt="" class="w-4 lg:w-7 h-4 lg:h-7" />
         <p class="text-xs lg:text-xl">Open until 3:00 AM</p>
       </div>
     </section>
@@ -120,8 +147,9 @@
       <div
         class="w-auto md:w-[280px] lg:h-10 border-2 rounded-3xl flex flex-row items-center justify-start gap-x-2 md:gap-x-4 px-2 py-3"
       >
-        <img src="./assets/Search More.png" alt="" class="w-5 h-5" />
+        <img src="../assets/Search More.png" alt="" class="w-5 h-5" />
         <input
+          id="search-input"
           type="text"
           class="focus:border-none focus:outline-none text-xs xl:text-base placeholder:text-xs"
           placeholder="Search from menu..."
@@ -177,27 +205,113 @@
       </section>
     </div>
 
-    <!-- Slider  -->
+    <!-- New Section  -->
+    <section class="bg-white py-12 w-full md:px-6 lg:px-10">
+      <div class="mx-auto px-4">
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-6 bg-[#FBFBFB] py-10 min-h-full"
+        >
+          <!-- Delivery Information -->
+          <div class="p-6 flex flex-col justify-between">
+            <h2
+              class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2"
+            >
+              <img src="../assets/Tracking.png" alt="" /> Delivery Information
+            </h2>
+            <ul class="text-gray-700 space-y-3">
+              <li>
+                <strong>Monday:</strong> 12:00 AM–3:00 AM, 8:00 AM–3:00 AM
+              </li>
+              <li><strong>Tuesday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Wednesday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Thursday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Friday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Saturday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Sunday:</strong> 8:00 AM–12:00 AM</li>
+            </ul>
+            <p class="mt-4 text-gray-700">
+              <strong>Estimated time until delivery:</strong> 20 min
+            </p>
+          </div>
 
-    <section class="py-2 lg:py-12 bg-[#D9D9D9] h-full lg:h-[500px] 2xl:h-[600px] mt-16">
-      <div class="container mx-auto px-4">
+          <!-- Contact Information -->
+          <div class="p-6 flex flex-col justify-between">
+            <h2
+              class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2"
+            >
+              <img src="../assets/ID Verified.png" alt="" /> Contact Information
+            </h2>
+            <p class="text-gray-700 mb-4 leading-10 text-wrap pr-12">
+              If you have allergies or other dietary restrictions, please
+              contact the restaurant. The restaurant will provide food-specific
+              information upon request.
+            </p>
+            <div class="text-gray-700 space-y-1">
+              <p><strong>Phone number:</strong> +934443-43</p>
+              <p>
+                <strong>Website:</strong>
+                <a
+                  href="http://mcdonalds.uk/"
+                  class="text-blue-500 hover:underline"
+                >
+                  http://mcdonalds.uk/
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Operational Times -->
+          <div
+            class="bg-[#03081F] text-white p-6 flex flex-col justify-between"
+          >
+            <h2 class="text-xl font-bold flex items-center gap-2">
+              <img src="../assets/operation.png" alt="" /> Operational Times
+            </h2>
+            <ul class="space-y-3">
+              <li><strong>Monday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Tuesday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Wednesday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Thursday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Friday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Saturday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Sunday:</strong> 8:00 AM–3:00 AM</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Slider  -->
+    <section
+      class="py-2 lg:py-12 bg-[#D9D9D9] h-full lg:h-[500px] 2xl:h-[600px] mt-16"
+    >
+      <div class="container mx-auto px-12">
         <!-- Header + Arrows -->
-        <div class="flex justify-between items-center mb-12 pt-2 lg:pt-5">
+        <div
+          class="flex justify-between items-center mb-12 pt-2 lg:pt-5 relative"
+        >
           <h2 class="text-3xl font-bold">Customer Reviews</h2>
-          <!-- <div class="space-x-2 flex">
+          <!-- Arrow controls aligned properly -->
+          <div
+            class="flex items-center w-12 gap-x-2 md:absolute md:top-1/2 md:-translate-y-1/2 md:right-4 z-10"
+          >
             <button
               type="button"
-              class="slick-prev h-8 w-8 rounded-full bg-[#FFB800] hidden md:flex items-center justify-center text-white"
+              class="slick-prev h-10 w-10 rounded-full bg-[#FFB800] hidden md:flex items-center justify-center"
+              onclick="prevArrow()"
             >
-              <i class="fa-solid fa-angle-left"></i>
+              <i class="fa-solid fa-angle-left text-black"></i>
             </button>
             <button
               type="button"
-              class="slick-next h-8 w-8 rounded-full bg-[#FFB800] hidden md:flex justify-center text-white"
+              class="slick-next h-10 w-10 rounded-full bg-[#FFB800] hidden md:flex items-center justify-center"
+              onclick="nextArrow()"
             >
-              <i class="fa-solid fa-angle-right"></i>
+              <i class="fa-solid fa-angle-right text-black"></i>
             </button>
-          </div> -->
+          </div>
         </div>
 
         <!-- Reviews Slider -->
@@ -210,7 +324,7 @@
               <div class="flex items-center mb-4">
                 <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
                   <img
-                    src="./assets/sliderimage.png"
+                    src="../assets/sliderimage.png"
                     alt="Reviewer"
                     class="w-full h-full object-cover"
                   />
@@ -249,7 +363,7 @@
               <div class="flex items-center mb-4">
                 <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
                   <img
-                    src="./assets/sliderimage.png"
+                    src="../assets/sliderimage.png"
                     alt="Reviewer"
                     class="w-full h-full object-cover"
                   />
@@ -288,7 +402,7 @@
               <div class="flex items-center mb-4">
                 <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
                   <img
-                    src="./assets/sliderimage.png"
+                    src="../assets/sliderimage.png"
                     alt="Reviewer"
                     class="w-full h-full object-cover"
                   />
@@ -327,7 +441,7 @@
               <div class="flex items-center mb-4">
                 <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
                   <img
-                    src="./assets/sliderimage.png"
+                    src="../assets/sliderimage.png"
                     alt="Reviewer"
                     class="w-full h-full object-cover"
                   />
@@ -361,7 +475,7 @@
         <div
           class="w-full flex justify-center mt-6 -mb-10 md:-mb-16 lg:-mb-1 lg:mt-16 2xl:mt-24 h-16 md:h-[100px] 2xl:w-[153px] 2xl:h-[178px]"
         >
-          <img src="./assets/reviews.png" alt="" class=" " />
+          <img src="../assets/reviews.png" alt="" class=" " />
         </div>
       </div>
     </section>
@@ -378,7 +492,7 @@
             class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md"
           >
             <img
-              src="./assets/mac.png"
+              src="../assets/mac.png"
               alt="McDonald's London"
               class="w-full h-full object-contain"
             />
@@ -393,7 +507,7 @@
             class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md"
           >
             <img
-              src="./assets/papajhons.png"
+              src="../assets/papajhons.png"
               alt="Papa Johns"
               class="w-full h-full object-contain"
             />
@@ -408,7 +522,7 @@
             class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md"
           >
             <img
-              src="./assets/kfc.png"
+              src="../assets/kfc.png"
               alt="KFC West London"
               class="w-full h-full object-contain"
             />
@@ -423,7 +537,7 @@
             class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md"
           >
             <img
-              src="./assets/texas.png"
+              src="../assets/texas.png"
               alt="Texas Chicken"
               class="w-full h-full object-contain"
             />
@@ -438,7 +552,7 @@
             class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md"
           >
             <img
-              src="./assets/BK.png"
+              src="../assets/BK.png"
               alt="Burger King"
               class="w-full h-full object-contain"
             />
@@ -453,7 +567,7 @@
             class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md"
           >
             <img
-              src="./assets/shuarma.png"
+              src="../assets/shuarma.png"
               alt="Shaurma 1"
               class="w-full h-full object-contain"
             />
@@ -479,7 +593,7 @@
             <div class="flex flex-col items-center md:items-start">
               <div class="logo">
                 <img
-                  src="./assets/LOGO 2.png"
+                  src="../assets/LOGO 2.png"
                   class="w-[160px] xl:w-[200px] 2xl:w-[268px]"
                   alt="Company Logo"
                 />
@@ -489,7 +603,7 @@
                   class="w-[100px] 2xl:w-[178px] h-[45px] md:h-[50px] rounded-sm bg-black flex items-center justify-center"
                 >
                   <img
-                    src="./assets/appstore.png"
+                    src="../assets/appstore.png"
                     class="object-contain h-[60%] md:h-full"
                     alt="Download on App Store"
                   />
@@ -498,7 +612,7 @@
                   class="w-[100px] 2xl:w-[178px] h-[45px] md:h-[50px] bg-black rounded-sm flex items-center justify-center"
                 >
                   <img
-                    src="./assets/playstore.png"
+                    src="../assets/playstore.png"
                     class="object-contain h-[60%] md:h-full"
                     alt="Get on Google Play"
                   />
@@ -537,22 +651,22 @@
               </p>
               <div class="flex gap-3 md:gap-4 mt-3 md:mt-4">
                 <img
-                  src="./assets/Facebook.png"
+                  src="../assets/Facebook.png"
                   alt="Facebook"
                   class="h-8 w-8 md:h-10 md:w-10"
                 />
                 <img
-                  src="./assets/Instagram.png"
+                  src="../assets/Instagram.png"
                   alt="Instagram"
                   class="h-8 w-8 md:h-10 md:w-10"
                 />
                 <img
-                  src="./assets/TikTok.png"
+                  src="../assets/TikTok.png"
                   alt="TikTok"
                   class="h-8 w-8 md:h-10 md:w-10"
                 />
                 <img
-                  src="./assets/Snapchat.png"
+                  src="../assets/Snapchat.png"
                   alt="Snapchat"
                   class="h-8 w-8 md:h-10 md:w-10"
                 />
@@ -659,57 +773,100 @@
     </footer>
 
     <!-- Cart  -->
+    <!-- MODAL OVERLAY -->
+    <div
+      id="cart-overlay"
+      class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto"
+    >
+      <div class="min-h-screen flex items-center justify-center p-6">
+        <!-- CART MODAL -->
+        <div
+          id="cart-modal"
+          class="bg-white w-full max-w-3xl p-6 rounded-xl shadow-lg space-y-4 relative"
+        >
+          <!-- Close Button -->
+          <div class="absolute -top-2 right-0">
+            <button
+              id="cart-toggle"
+              class="bg-orange-yellow text-white font-extrabold py-1 px-3 rounded-full"
+            >
+              x
+            </button>
+          </div>
 
-    <div id="cart-modal" class="hidden max-w-3xl h-screen mx-auto bg-white p-6 rounded-xl shadow-lg space-y-4 relative">
-      <div class="absolute -top-1 right-0">
-        <button id="cart-toggle" class="bg-orange-yellow text-white font-extrabold py-1 px-[10px] rounded-full">x</button>
+          <!-- Image -->
+          <div>
+            <img src="../assets/cartImage.png" alt="" />
+          </div>
+
+          <!-- Title -->
+          <h2 class="text-xl font-bold">Your Order</h2>
+
+          <!-- Items -->
+          <div id="cart-items" class="space-y-4"></div>
+
+          <!-- Footer -->
+          <div class="flex justify-between items-center border-t pt-4">
+            <p class="font-semibold text-lg">
+              Total to pay:
+              <span id="cart-total" class="text-orange-500">£0.00</span>
+            </p>
+            <div class="space-x-2">
+              <button class="underline text-sm">Take me back</button>
+              <button class="bg-green-600 text-white px-4 py-2 rounded">
+                Next Step
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <img src="./assets/cartImage.png" alt="">
-      </div>
-  <h2 class="text-xl font-bold">Your Order</h2>
-  <div id="cart-items" class="space-y-4"></div>
-  <div class="flex justify-between items-center border-t pt-4">
-    <p class="font-semibold text-lg">Total to pay: <span id="cart-total" class="text-orange-500">£0.00</span></p>
-    <div class="space-x-2">
-      <button class="underline text-sm">Take me back</button>
-      <button class="bg-green-600 text-white px-4 py-2 rounded">Next Step</button>
     </div>
-  </div>
-</div>
-
 
     <!-- JS Section  -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>
-      $(".reviews-slider").slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        arrows: true,
-        prevArrow: $(".slick-prev"),
-        nextArrow: $(".slick-next"),
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 2,
+      $(document).ready(function () {
+        $(".reviews-slider").slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 3000,
+          arrows: false,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 2,
+              },
             },
-          },
-          {
-            breakpoint: 768,
-            settings: {
-              slidesToShow: 1,
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1,
+              },
             },
-          },
-        ],
+          ],
+        });
       });
+
+      function nextArrow() {
+        $(".reviews-slider").slick("slickNext");
+      }
+
+      function prevArrow() {
+        $(".reviews-slider").slick("slickPrev");
+      }
     </script>
-    <script src="./menuList.js"></script>
-    <script src="./products.js"></script>
-    <script src="./navbar.js"></script>
-    <script src="./cart.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script src="./js/navbar.js"></script>
+    <script src="./js/menuList.js"></script>
+    <script src="./js/products.js"></script>
+    <script src="./js/cart.js"></script>
+    <!-- <script src="./js/swipper.js"></script> -->
   </body>
 </html>
