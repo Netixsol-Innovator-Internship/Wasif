@@ -1,7 +1,7 @@
 let allProducts = [];
 
 const products = (id, type) => {
-  fetch("../../data.json")
+  fetch("../data.json")
     .then((response) => response.json())
     .then((data) => {
       allProducts = data;

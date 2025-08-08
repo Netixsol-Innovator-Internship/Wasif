@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="output.css" />
+    <title>Profile</title>
+  </head>
+  <body class="font-manrope text-gray-800">
+    <header
+      class="w-full flex justify-between px-10 items-center py-2 border-b-2 container mx-auto"
+    >
+      <!-- logo  -->
+      <div class="flex gap-x-3 h-[20px] item-center">
+        <img src="./assets/logo.png" alt="" class="w-4 h-4 mt-2" />
+        <h1 class="text-lg font-bold">QuizMaster</h1>
+      </div>
+      <nav class="flex gap-x-3 items-center">
+        <ul class="hidden md:flex justify-between text-sm gap-x-9">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./quizSelection.html">Quizzes</a></li>
+          <li><a href="./">Leaderboard</a></li>
+          <li><a href="./profile.html">Profile</a></li>
+        </ul>
+        <div class="flex gap-x-3">
+          <div class="p-2 rounded-xl bg-[#F0F2F5]">
+            <img src="./assets/bell.png" alt="" />
+          </div>
+          <div class="rounded-full w-10 h-10 overflow-hidden">
+            <img
+              src="./assets/avatar.png"
+              alt=""
+              class="object-cover w-full h-full rounded-full"
+            />
+          </div>
+          <div>
+            <button id="menuToggle" class="md:hidden text-2xl text-gray-700">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="md:hidden">
+      <ul
+        id="mobileMenu"
+        class="hidden flex-col w-full bg-white shadow-md px-6 py-4 rounded-b-xl text-sm gap-y-3 transition-all duration-300 ease-in-out z-50"
+      >
+        <li>
+          <a
+            href="./index.html"
+            class="block py-2 text-gray-700 hover:text-blue-600 hover:font-medium transition"
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            href="./quizSelection.html"
+            class="block py-2 text-gray-700 hover:text-blue-600 hover:font-medium transition"
+          >
+            Quizzes
+          </a>
+        </li>
+        <li>
+          <a
+            href="./"
+            class="block py-2 text-gray-700 hover:text-blue-600 hover:font-medium transition"
+          >
+            Leaderboard
+          </a>
+        </li>
+        <li>
+          <a
+            href="./profile.html"
+            class="block py-2 text-gray-700 hover:text-blue-600 hover:font-medium transition"
+          >
+            Profile
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- Profile Section -->
+    <section class="max-w-[960px] mx-auto p-6">
+      <div class="flex flex-col items-center">
+        <img
+          src="./assets/avatar.png"
+          alt="Profile"
+          class="w-24 h-24 rounded-full border"
+        />
+        <h1 id="" class="profileName mt-4 text-2xl font-bold">Loading...</h1>
+        <p class="text-gray-500">Quiz Enthusiast</p>
+        <p class="text-gray-400 text-sm">Joined 2021</p>
+      </div>
+
+      <div class="flex justify-start mt-6 border-b">
+        <button
+          class="px-4 py-2 text-gray-600 border-b-2 border-transparent hover:border-black"
+        >
+          Activity
+        </button>
+        <button
+          class="px-4 py-2 text-black border-b-2 border-black font-medium"
+        >
+          Profile
+        </button>
+      </div>
+
+      <!-- Personal Info -->
+      <div class="mt-8 bg-white p-6 w-full">
+        <h2 class="text-2xl font-semibold mb-4">Personal Information</h2>
+        <div class="flex justify-start gap-x-5 gap-y-4 mt-6">
+          <div class="border-t w-32">
+            <p class="text-gray-500 text-sm pt-6">Name</p>
+            <h1 id="" class="profileName font-medium">
+              Muhammad Wasif Bin Nasir
+            </h1>
+          </div>
+          <div class="border-t w-full">
+            <p class="text-gray-500 text-sm pt-6">Email</p>
+            <p id="profileEmail" class="font-medium">Loading...</p>
+          </div>
+        </div>
+        <div class="pt-6">
+          <div class="border-t w-[186px]">
+            <p class="text-gray-500 text-sm pt-6">Bio</p>
+            <p id="profileBio" class="font-medium">Loading...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz History -->
+      <div class="mt-8 p-6">
+        <h2 class="text-2xl font-semibold mb-4">Quiz History</h2>
+        <table
+          class="w-full border-separate border-spacing-7 border-2 rounded-2xl"
+        >
+          <thead>
+            <tr class="text-left">
+              <th class="p-3 text-sm font-medium text-gray-600">Quiz Name</th>
+              <th class="p-3 text-sm font-medium text-gray-600">Score</th>
+              <th class="p-3 text-sm font-medium text-gray-600">Date</th>
+            </tr>
+          </thead>
+          <tbody id="quizHistoryTable">
+            <tr>
+              <td colspan="3" class="text-center">Loading...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <script src="./script/profile.js"></script>
+    <script src="./script/navbar.js"></script>
+  </body>
+</html>

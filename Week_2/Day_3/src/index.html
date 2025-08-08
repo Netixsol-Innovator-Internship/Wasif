@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./output.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
@@ -29,7 +30,6 @@
       type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
     />
-    <link href="./output.css" rel="stylesheet" />
     <title>Order.uK</title>
   </head>
   <body class="font-poppins">
@@ -295,18 +295,18 @@
           <h2 class="text-3xl font-bold">Customer Reviews</h2>
           <!-- Arrow controls aligned properly -->
           <div
-            class="flex items-center w-12 gap-x-2 md:absolute md:top-1/2 md:-translate-y-1/2 md:right-4 z-10"
+            class="flex items-center w-max gap-x-2 md:absolute md:top-1/2 md:-translate-y-1/2 md:right-4 z-10"
           >
             <button
               type="button"
-              class="slick-prev h-10 w-10 rounded-full bg-[#FFB800] hidden md:flex items-center justify-center"
+              class=" h-10 w-10 rounded-full bg-[#FFB800] hidden md:block items-center justify-center"
               onclick="prevArrow()"
             >
               <i class="fa-solid fa-angle-left text-black"></i>
             </button>
             <button
               type="button"
-              class="slick-next h-10 w-10 rounded-full bg-[#FFB800] hidden md:flex items-center justify-center"
+              class=" h-10 w-10  rounded-full bg-[#FFB800] hidden md:flex items-center justify-center"
               onclick="nextArrow()"
             >
               <i class="fa-solid fa-angle-right text-black"></i>
@@ -863,10 +863,10 @@
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/toastify-js"
     ></script>
-    <script src="./js/navbar.js"></script>
-    <script src="./js/menuList.js"></script>
-    <script src="./js/products.js"></script>
-    <script src="./js/cart.js"></script>
+    <script src="/js/navbar.js"></script>
+    <script src="/js/menuList.js"></script>
+    <script src="/js/products.js"></script>
+    <script src="/js/cart.js"></script>
     <!-- <script src="./js/swipper.js"></script> -->
   </body>
 </html>
