@@ -4,7 +4,6 @@ document.getElementById("menuToggle").addEventListener("click", function () {
 
     menu.classList.toggle("hidden");
 
-    // Toggle icon between bars and X
     if (menu.classList.contains("hidden")) {
       icon.classList.remove("fa-times");
       icon.classList.add("fa-bars");

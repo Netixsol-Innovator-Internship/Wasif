@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Redirect to review page
+
 function reviewAnswers() {
   window.location.href = "review.html"; // <-- Changed from quizScreen.html
 }
