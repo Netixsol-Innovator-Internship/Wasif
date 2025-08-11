@@ -19,10 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const user = { name, email, password };
       localStorage.setItem("quiz_user", JSON.stringify(user));
       alert("Signup successful!");
-      console.log(user);
+      console.log("New user signed up:", user);
 
       window.location.href = "signin.html";
-      console.log(user);
     });
   }
 
@@ -33,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const email = document.getElementById("signinEmail").value.trim();
       const password = document.getElementById("signinPassword").value;
-
       const storedUser = JSON.parse(localStorage.getItem("quiz_user"));
 
       if (
@@ -42,11 +40,15 @@ document.addEventListener("DOMContentLoaded", () => {
         storedUser.password === password
       ) {
         alert("Login successful!");
-        window.location.href = "quizSelection.html";
+
+        // Redirect to intended page or default
+        const redirectPage =
+          localStorage.getItem("redirectAfterLogin") || "quizSelection.html";
+        localStorage.removeItem("redirectAfterLogin");
+        window.location.href = redirectPage;
       } else {
         alert("Invalid credentials. Please try again.");
       }
-      console.log(storedUser);
     });
   }
 });

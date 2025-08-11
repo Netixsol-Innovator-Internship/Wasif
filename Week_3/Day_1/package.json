@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "express": "^5.1.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "express-validator": "^7.2.1",
+    "nodemon": "^3.1.10"
+  },
+  "name": "day_1",
+  "version": "1.0.0",
+  "main": "api/index.js",
+  "scripts": {
+    "dev": "node api/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

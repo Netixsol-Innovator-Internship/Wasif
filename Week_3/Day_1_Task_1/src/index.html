@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Azaiza</title>
+    <link rel="stylesheet" href="./output.css" />
+  </head>
+
+  <body class="font-primary bg-[#36323a]">
+    <!-- Container -->
+    <div class="max-w-screen-[1920px] mx-auto bg-white">
+      <nav
+        class="flex justify-between items-center py-5 px-4 md:px-[25px] lg:px-[60px] xl:px-[100px]"
+      >
+        <img src="assets/logo.svg" class="w-[93px] lg:w-[144px]" alt="Logo" />
+
+        <ul class="hidden md:flex text-sm cursor-pointer lg:gap-2">
+          <li class="py-[6px] px-3" data-active="true"><a href="#">Home</a></li>
+          <li class="py-[6px] px-3" data-active="false">
+            <a href="#">About Us</a>
+          </li>
+          <li class="py-[6px] px-3 relative group" data-active="false">
+            <a href="#" class="flex lg:gap-1 items-center">
+              <span>Features</span>
+              <img src="assets/down-arrow.svg" class="h-4" alt="DropDown" />
+            </a>
+            <ul
+              class="absolute left-0 pt-3 w-40 bg-white rounded-xl hidden group-hover:block"
+            >
+              <li class="px-4 py-2 rounded-xl hover:bg-gray-100">
+                <a href="#">Feature 1</a>
+              </li>
+              <li class="px-4 py-2 rounded-xl hover:bg-gray-100">
+                <a href="#">Feature 2</a>
+              </li>
+              <li class="px-4 py-2 rounded-xl hover:bg-gray-100">
+                <a href="#">Feature 3</a>
+              </li>
+            </ul>
+          </li>
+          <li class="py-[6px] px-3 relative group" data-active="false">
+            <a href="#" class="flex lg:gap-1 items-center">
+              <span>Our Services</span>
+              <img src="assets/down-arrow.svg" class="h-4" alt="DropDown" />
+            </a>
+            <ul
+              class="absolute left-0 pt-3 w-40 bg-white rounded-xl hidden group-hover:block"
+            >
+              <li class="px-4 py-2 rounded-xl hover:bg-gray-100">
+                <a href="#">Service 1</a>
+              </li>
+              <li class="px-4 py-2 rounded-xl hover:bg-gray-100">
+                <a href="#">Service 2</a>
+              </li>
+              <li class="px-4 py-2 rounded-xl hover:bg-gray-100">
+                <a href="#">Service 3</a>
+              </li>
+            </ul>
+          </li>
+          <li class="py-[6px] px-3" data-active="false">
+            <a href="#">Why ADS?</a>
+          </li>
+        </ul>
+
+        <!-- Hamburger menu for mobile screens -->
+        <button id="toggle-dropdown-btn" class="md:hidden cursor-pointer">
+          <img
+            src="assets/hamburger-menu-open.svg"
+            id="toggle-dropdown-img"
+            alt="Open NavBar"
+          />
+        </button>
+
+        <!-- Contact us button for desktop and tablet screens -->
+        <button
+          class="hidden md:block py-2 px-6 text-[18px] text-white rounded-[8px] bg-[linear-gradient(83.21deg,_#3B0066_-130.25%,_#175FC4_-5.2%,_#00E1E7_140.51%,_#00F7E0_172.5%,_#00FFDD_192.89%)] cursor-pointer"
+        >
+          <a href="#">Contact Us</a>
+        </button>
+      </nav>
+
+      <div
+        id="separator"
+        class="hidden md:hidden mx-6 border border-[#F0F0F0]"
+      ></div>
+
+      <!-- Drop Down menu -->
+      <section id="dropdown" class="hidden md:hidden bg-white py-5">
+        <ul class="text-sm cursor-pointer grid gap-2 px-6">
+          <li class="py-2 px-3 flex justify-center w-full" data-active="true">
+            <a href="#">Home</a>
+          </li>
+          <li class="py-2 px-3 flex justify-center w-full" data-active="false">
+            <a href="#">About Us</a>
+          </li>
+
+          <li
+            class="py-2 px-3 flex justify-center w-full gap-1"
+            data-active="false"
+          >
+            <a href="#" class="flex lg:gap-1 items-center">
+              <span>Features</span>
+              <img src="assets/down-arrow.svg" class="h-4" alt="DropDown" />
+            </a>
+          </li>
+
+          <li
+            class="py-2 px-3 flex justify-center w-full gap-1"
+            data-active="false"
+          >
+            <a href="#" class="flex lg:gap-1 items-center">
+              <span>Our Services</span>
+              <img src="assets/down-arrow.svg" class="h-4" alt="DropDown" />
+            </a>
+          </li>
+
+          <li class="py-2 px-3 flex justify-center w-full" data-active="false">
+            <a href="#">Why ADS?</a>
+          </li>
+
+          <li class="mt-2">
+            <button
+              class="w-full py-2 px-6 text-[18px] text-white rounded-[8px] bg-[linear-gradient(83.21deg,_#3B0066_-130.25%,_#175FC4_-5.2%,_#00E1E7_140.51%,_#00F7E0_172.5%,_#00FFDD_192.89%)]"
+            >
+              <a href="#">Contact Us</a>
+            </button>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <script src="navbar.js"></script>
+  </body>
+</html>
