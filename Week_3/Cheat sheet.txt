@@ -1,0 +1,15 @@
+project/
+├── config/           # Configuration files
+│   └── db.js         # MongoDB connection
+├── models/           # Mongoose models
+│   └── User.js       # User schema
+├── controllers/      # Route handlers
+│   └── userController.js
+├── routes/           # Route definitions
+│   └── userRoutes.js
+├── middleware/       # Custom middleware
+│   └── auth.js       # Authentication
+├── utils/            # Helpers, validators
+│   └── errorHandler.js
+├── app.js            # Main Express app
+└── server.js         # Server entry point

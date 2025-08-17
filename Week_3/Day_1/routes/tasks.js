@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const ctrl = require("../controllers/taskController.js");
 const validate = require("../middleware/validateTask.js");
+// const auth = require("../middleware/auth.js");
 
 router.get("/", ctrl.getAllTasks);
 router.get("/task", ctrl.getTask);

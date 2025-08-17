@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: "Montserrat", sans-serif;
+    --font-display: "Prosto One", sans-serif;
+  }
+
+  /* Montserrat */
+  @font-face {
+    font-family: "Montserrat";
+    src: url("/font/Montserrat-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  /* Prosto One */
+  @font-face {
+    font-family: "Prosto One";
+    src: url("/font/ProstoOne-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-display: swap;
+  }
+}

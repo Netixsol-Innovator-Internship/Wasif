@@ -1,0 +1,169 @@
+import { useEffect, useState } from "react";
+import {
+  getAllTasks,
+  createTask,
+  updateTask,
+  deleteTask,
+} from "../apis/tasks";
+
+export default function TasksScreen() {
+  const [tasks, setTasks] = useState([]);
+  const [input, setInput] = useState("");
+  const [editingId, setEditingId] = useState(null);
+  const [editText, setEditText] = useState("");
+
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
+  const fetchTasks = async () => {
+    try {
+      const res = await getAllTasks();
+      setTasks(res.data);
+    } catch (err) {
+      console.error("Error fetching tasks:", err);
+    }
+  };
+
+  const handleInput = (e) => {
+    setInput(e.target.value);
+  };
+
+  const handleAddTask = async () => {
+    if (!input.trim()) {
+      alert("Please enter a task");
+      return;
+    }
+    try {
+      await createTask(input);
+      setInput("");
+      fetchTasks();
+    } catch (err) {
+      console.error("Error adding task:", err);
+    }
+  };
+
+  const handleClearAll = async () => {
+    try {
+      for (let task of tasks) {
+        await deleteTask(task._id);
+      }
+      setTasks([]);
+    } catch (err) {
+      console.error("Error clearing all tasks:", err);
+    }
+  };
+
+  const handleToggle = async (task) => {
+    try {
+      await updateTask(task._id, task.title, !task.completed);
+      fetchTasks();
+    } catch (err) {
+      console.error("Error toggling task:", err);
+    }
+  };
+
+  const handleEdit = async (task) => {
+    if (editingId === task._id) {
+      try {
+        await updateTask(task._id, editText, task.completed);
+        setEditingId(null);
+        fetchTasks();
+      } catch (err) {
+        console.error("Error saving edit:", err);
+      }
+    } else {
+      setEditingId(task._id);
+      setEditText(task.title);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteTask(id);
+      fetchTasks();
+    } catch (err) {
+      console.error("Error deleting task:", err);
+    }
+  };
+
+  return (
+    <>
+      <div className="w-full h-auto bg-gray-900 flex justify-center items-center mt-4">
+        <div className="w-1/2 h-auto bg-gray-800 rounded-lg shadow-lg flex justify-center items-center gap-2 p-4 drop-shadow-[0_0_8px_#01ff9d]">
+          <input
+            type="text"
+            value={input}
+            placeholder="Enter Your Task"
+            className="w-[70%] mx-auto h-9 text-white bg-gray-600 p-2 rounded-md focus:outline-none"
+            onChange={handleInput}
+          />
+          <button
+            className="w-16 h-9 bg-gradient-to-bl from-[#6a00f4] to-cyan-700 text-white font-normal rounded-sm"
+            onClick={handleAddTask}
+          >
+            Add
+          </button>
+          <button
+            className="w-18 h-9 bg-gradient-to-tl from-[#6a00f4] to-cyan-700 text-white font-normal rounded-sm"
+            onClick={handleClearAll}
+          >
+            Clear All
+          </button>
+        </div>
+      </div>
+      <div>
+        {tasks.map((task) => (
+          <div
+            key={task._id}
+            className={`w-1/2 p-4 flex justify-between rounded-lg shadow-lg items-center mt-4 mx-auto gap-2 text-white bg-gray-800 ${
+              task.completed
+                ? "line-through drop-shadow-[0_0_10px_#000] bg-emerald-700"
+                : "drop-shadow-[0_0_10px_#FF00AA] opacity-70"
+            }`}
+          >
+            {editingId === task._id ? (
+              <input
+                type="text"
+                value={editText}
+                onChange={(e) => setEditText(e.target.value)}
+                className="flex-1 bg-gray-700 text-white p-2 rounded"
+                autoFocus
+              />
+            ) : (
+              <p
+                className="flex-1 cursor-pointer"
+                onClick={() => handleToggle(task)}
+              >
+                {task.title}
+              </p>
+            )}
+            <button
+              className={`w-16 h-9 bg-gradient-to-bl from-[#6a00f4] to-cyan-700 text-white font-normal rounded-sm ${
+                task.completed
+                  ? "disabled:cursor-not-allowed disabled:opacity-50"
+                  : ""
+              }`}
+              onClick={() => handleEdit(task)}
+              disabled={task.completed}
+            >
+              {editingId === task._id ? "Save" : "Edit"}
+            </button>
+            <button
+              className={`w-16 h-9 bg-gradient-to-bl from-[#6a00f4] to-cyan-700 text-white font-normal rounded-sm ${
+                task.completed
+                  ? "disabled:cursor-not-allowed disabled:opacity-50"
+                  : ""
+              }`}
+              onClick={() => handleDelete(task._id)}
+              disabled={task.completed}
+            >
+              Delete
+            </button>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
