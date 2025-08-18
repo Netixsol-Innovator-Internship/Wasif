@@ -1,17 +1,13 @@
-import { useEffect, useState } from "react";
-import {
-  getAllTasks,
-  createTask,
-  updateTask,
-  deleteTask,
-} from "../apis/tasks";
+import { useEffect, useState, useMemo } from "react";
+import { getAllTasks, createTask, updateTask, deleteTask } from "../apis/tasks";
+import TaskInput from "./components/TaskInput";
+import TaskList from "./components/TaskList";
+import TaskStats from "./components/TaskStats";
+import type { Task } from "./types";
 
-export default function TasksScreen() {
-  const [tasks, setTasks] = useState([]);
-  const [input, setInput] = useState("");
-  const [editingId, setEditingId] = useState(null);
-  const [editText, setEditText] = useState("");
-
+export default function App() {
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchTasks();
@@ -21,149 +17,77 @@ export default function TasksScreen() {
     try {
       const res = await getAllTasks();
       setTasks(res.data);
-    } catch (err) {
-      console.error("Error fetching tasks:", err);
+    } catch (err: any) {
+      setError(err.message || "Failed to load tasks");
     }
   };
 
-  const handleInput = (e) => {
-    setInput(e.target.value);
-  };
-
-  const handleAddTask = async () => {
-    if (!input.trim()) {
-      alert("Please enter a task");
-      return;
-    }
+  const handleAddTask = async (title: string) => {
     try {
-      await createTask(input);
-      setInput("");
+      await createTask(title);
       fetchTasks();
-    } catch (err) {
-      console.error("Error adding task:", err);
+    } catch (err: any) {
+      setError(err.message || "Failed to add task");
     }
   };
 
   const handleClearAll = async () => {
     try {
-      for (let task of tasks) {
-        await deleteTask(task._id);
-      }
+      await Promise.all(tasks.map((t) => deleteTask(t._id)));
       setTasks([]);
-    } catch (err) {
-      console.error("Error clearing all tasks:", err);
+    } catch (err: any) {
+      setError(err.message || "Failed to clear tasks");
     }
   };
 
-  const handleToggle = async (task) => {
+  const handleToggle = async (task: Task) => {
     try {
       await updateTask(task._id, task.title, !task.completed);
       fetchTasks();
-    } catch (err) {
-      console.error("Error toggling task:", err);
+    } catch (err: any) {
+      setError(err.message || "Failed to update task");
     }
   };
 
-  const handleEdit = async (task) => {
-    if (editingId === task._id) {
-      try {
-        await updateTask(task._id, editText, task.completed);
-        setEditingId(null);
-        fetchTasks();
-      } catch (err) {
-        console.error("Error saving edit:", err);
-      }
-    } else {
-      setEditingId(task._id);
-      setEditText(task.title);
+  const handleEdit = async (id: string, title: string, completed: boolean) => {
+    try {
+      await updateTask(id, title, completed);
+      fetchTasks();
+    } catch (err: any) {
+      setError(err.message || "Failed to edit task");
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id: string) => {
     try {
       await deleteTask(id);
       fetchTasks();
-    } catch (err) {
-      console.error("Error deleting task:", err);
+    } catch (err: any) {
+      setError(err.message || "Failed to delete task");
     }
   };
 
+  const stats = useMemo(() => {
+    const completed = tasks.filter((t) => t.completed).length;
+    return { completed, pending: tasks.length - completed, total: tasks.length };
+  }, [tasks]);
+
   return (
-    <>
-      <div className="w-full h-auto bg-gray-900 flex justify-center items-center mt-4 px-3">
-        <div className="w-full md:w-1/2  h-auto bg-gray-800 rounded-lg shadow-lg flex justify-center items-center gap-2 p-4 drop-shadow-[0_0_8px_#01ff9d]">
-          <input
-            type="text"
-            value={input}
-            placeholder="Enter Your Task"
-            className="w-[70%] mx-auto h-9 text-white bg-gray-600 p-2 rounded-md focus:outline-none"
-            onChange={handleInput}
-          />
-          <button
-            className="w-16 h-9 bg-gradient-to-bl from-[#6a00f4] to-cyan-700 text-white font-normal rounded-sm text-sm md:text-base"
-            onClick={handleAddTask}
-          >
-            Add
-          </button>
-          <button
-            className="w-18 h-9 bg-gradient-to-tl from-[#6a00f4] to-cyan-700 text-white font-normal rounded-sm text-sm md:text-base"
-            onClick={handleClearAll}
-          >
-            Clear All
-          </button>
-        </div>
-      </div>
-      <div className="px-6">
-        {tasks.map((task) => (
-          <div
-            key={task._id}
-            className={`w-full md:w-1/2 p-4 flex justify-between rounded-lg shadow-lg items-center mt-4 mx-auto gap-2 text-white bg-gray-800 ${
-              task.completed
-                ? "line-through drop-shadow-[0_0_10px_#000] bg-emerald-700"
-                : "drop-shadow-[0_0_10px_#FF00AA] opacity-70"
-            }`}
-          >
-            {editingId === task._id ? (
-              <input
-                type="text"
-                value={editText}
-                onChange={(e) => setEditText(e.target.value)}
-                className="flex-1 bg-gray-700 text-white p-2 rounded"
-                autoFocus
-              />
-            ) : (
-              <p
-                className="flex-1 cursor-pointer"
-                onClick={() => handleToggle(task)}
-              >
-                {task.title}
-              </p>
-            )}
-            <button
-              className={`w-16 h-9 bg-gradient-to-bl from-[#6a00f4] to-cyan-700 text-white font-normal rounded-sm ${
-                task.completed
-                  ? "disabled:cursor-not-allowed disabled:opacity-50"
-                  : ""
-              }`}
-              onClick={() => handleEdit(task)}
-              disabled={task.completed}
-            >
-              {editingId === task._id ? "Save" : "Edit"}
-            </button>
-            <button
-              className={`w-16 h-9 bg-gradient-to-bl from-[#6a00f4] to-cyan-700 text-white font-normal rounded-sm ${
-                task.completed
-                  ? "disabled:cursor-not-allowed disabled:opacity-50"
-                  : ""
-              }`}
-              onClick={() => handleDelete(task._id)}
-              disabled={task.completed}
-            >
-              Delete
-            </button>
-          </div>
-        ))}
-      </div>
-    </>
+    <div className="w-full min-h-screen bg-gray-900 text-white py-6">
+      <h1 className="text-3xl font-bold text-center mb-6">Todo App</h1>
+
+      {error && <p className="text-center text-red-500 mb-4">{error}</p>}
+
+      <TaskInput onAdd={handleAddTask} onClearAll={handleClearAll} />
+
+      <TaskStats stats={stats} />
+
+      <TaskList
+        tasks={tasks}
+        onToggle={handleToggle}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+      />
+    </div>
   );
 }
