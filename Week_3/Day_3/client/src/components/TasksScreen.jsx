@@ -90,8 +90,8 @@ export default function TasksScreen() {
 
   return (
     <>
-      <div className="w-full h-auto bg-gray-900 flex justify-center items-center mt-4">
-        <div className="w-1/2 h-auto bg-gray-800 rounded-lg shadow-lg flex justify-center items-center gap-2 p-4 drop-shadow-[0_0_8px_#01ff9d]">
+      <div className="w-full h-auto bg-gray-900 flex justify-center items-center mt-4 px-3">
+        <div className="w-full md:w-1/2  h-auto bg-gray-800 rounded-lg shadow-lg flex justify-center items-center gap-2 p-4 drop-shadow-[0_0_8px_#01ff9d]">
           <input
             type="text"
             value={input}
@@ -100,24 +100,24 @@ export default function TasksScreen() {
             onChange={handleInput}
           />
           <button
-            className="w-16 h-9 bg-gradient-to-bl from-[#6a00f4] to-cyan-700 text-white font-normal rounded-sm"
+            className="w-16 h-9 bg-gradient-to-bl from-[#6a00f4] to-cyan-700 text-white font-normal rounded-sm text-sm md:text-base"
             onClick={handleAddTask}
           >
             Add
           </button>
           <button
-            className="w-18 h-9 bg-gradient-to-tl from-[#6a00f4] to-cyan-700 text-white font-normal rounded-sm"
+            className="w-18 h-9 bg-gradient-to-tl from-[#6a00f4] to-cyan-700 text-white font-normal rounded-sm text-sm md:text-base"
             onClick={handleClearAll}
           >
             Clear All
           </button>
         </div>
       </div>
-      <div>
+      <div className="px-6">
         {tasks.map((task) => (
           <div
             key={task._id}
-            className={`w-1/2 p-4 flex justify-between rounded-lg shadow-lg items-center mt-4 mx-auto gap-2 text-white bg-gray-800 ${
+            className={`w-full md:w-1/2 p-4 flex justify-between rounded-lg shadow-lg items-center mt-4 mx-auto gap-2 text-white bg-gray-800 ${
               task.completed
                 ? "line-through drop-shadow-[0_0_10px_#000] bg-emerald-700"
                 : "drop-shadow-[0_0_10px_#FF00AA] opacity-70"

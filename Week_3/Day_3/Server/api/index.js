@@ -8,7 +8,12 @@ const connectDB = require("../config/db");
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173", methods: "POST, OPTIONS, PATCH, PUT, GET, DELETE" }));
+app.use(
+  cors({
+    origin: "http://localhost:5174",
+    methods: "POST, OPTIONS, PATCH, PUT, GET, DELETE",
+  })
+);
 
 // Connect to DB once (not on every request)
 connectDB();
@@ -26,7 +31,8 @@ app.use("/api/users", authRouter);
 app.use(errorHandler);
 
 // Export app for Vercel serverless
-// module.exports = app;
 app.listen(3000, () => {
   console.log(`Server Running at ${3000}`);
 });
+
+module.exports = app;

@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 });
 app.use("/api/users", authRouter);
 app.use("/api/products", productRouter);
-app.use("api/cart", cartRouter);
+app.use("/api/cart", cartRouter);
 app.use(errorHandler);
 app.listen(5000, () => {
   console.log(`Server Running at ${5000}`);

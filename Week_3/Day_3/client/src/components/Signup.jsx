@@ -6,11 +6,17 @@ export default function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSignup = async () => {
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !confirmPassword) {
       alert("Please fill in all fields");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
       return;
     }
 
@@ -18,8 +24,7 @@ export default function Signup() {
       setLoading(true);
       const data = await signupUser(name, email, password);
 
-      
-      data.token
+      // localStorage.setItem("token", data.token);
 
       alert("Signup successful!");
       window.location.href = "/login";
@@ -31,7 +36,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+    <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4">
       <div className="w-[400px] bg-gray-800 rounded-lg shadow-lg p-6 drop-shadow-[0_0_8px_#01ff9d]">
         <h1 className="text-white text-2xl font-bold mb-6 text-center">
           Sign Up
@@ -56,6 +61,13 @@ export default function Signup() {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className="w-full mb-4 p-2 bg-gray-600 text-white rounded-md focus:outline-none"
+        />
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
           className="w-full mb-4 p-2 bg-gray-600 text-white rounded-md focus:outline-none"
         />
 
