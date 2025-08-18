@@ -9,12 +9,7 @@ const connectDB = require("./config/db");
 
 const app = express();
 app.use(express.json());
-app.use(
-  cors({
-    origin: "https://wasif-rtu5.vercel.app/",
-    methods: "POST, OPTIONS, PATCH, PUT, GET, DELETE",
-  })
-);
+app.use(cors());
 connectDB();
 
 app.get("/", (req, res) => {

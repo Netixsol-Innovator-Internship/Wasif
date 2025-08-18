@@ -11,7 +11,7 @@ function Collections() {
       },
       {
         name: "GREEN TEA",
-        src: "../../public/assets/greenTea.jpg",
+        src: "/assets/greenTea.jpg",
         delay: "200",
       },
       {
