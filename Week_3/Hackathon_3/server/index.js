@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://wasif-rtu5.vercel.app/",
     methods: "POST, OPTIONS, PATCH, PUT, GET, DELETE",
   })
 );
@@ -27,3 +27,5 @@ app.use(errorHandler);
 app.listen(5000, () => {
   console.log(`Server Running at ${5000}`);
 });
+
+module.exports = app;

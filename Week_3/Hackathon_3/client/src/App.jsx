@@ -4,8 +4,10 @@ import ProductsPage from "./pages/Products";
 import ProductDetail from "./components/ProductDetail";
 import Cart from "./components/Cart";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
   return (
@@ -17,8 +19,16 @@ export default function App() {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/products/:id" element={<ProductDetail />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/cart"
+          element={
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

@@ -6,7 +6,7 @@ function Collections() {
     [
       {
         name: "BLACK TEA",
-        src: "../../public/assets/blacktea.png",
+        src: "/assets/blacktea.png",
         delay: "100",
       },
       {
@@ -16,29 +16,29 @@ function Collections() {
       },
       {
         name: "WHITE TEA",
-        src: "../../public/assets/whitetea.jpg",
+        src: "/assets/whitetea.jpg",
         delay: "300",
       },
     ],
     [
-      { name: "MATCHA", src: "../../public/assets/matcha.jpg", delay: "400" },
+      { name: "MATCHA", src: "/assets/matcha.jpg", delay: "400" },
       {
         name: "HERBAL TEA",
-        src: "../../public/assets/herbal.jpg",
+        src: "/assets/herbal.jpg",
         delay: "500",
       },
-      { name: "CHAI", src: "../../public/assets/chai.jpg", delay: "600" },
+      { name: "CHAI", src: "/assets/chai.jpg", delay: "600" },
     ],
     [
-      { name: "OOLONG", src: "../../public/assets/olong.jpg", delay: "700" },
+      { name: "OOLONG", src: "/assets/olong.jpg", delay: "700" },
       {
         name: "ROOIBOS",
-        src: "../../public/assets/roiboos.jpg",
+        src: "/assets/roiboos.jpg",
         delay: "800",
       },
       {
         name: "TEAWARE",
-        src: "../../public/assets/teaware.jpg",
+        src: "/assets/teaware.jpg",
         delay: "900",
       },
     ],
@@ -67,10 +67,6 @@ function Collections() {
                 src={tea.src}
                 alt={tea.name}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                onError={(e) => {
-                  e.target.src =
-                    "/images/placeholders/collection-placeholder.jpg";
-                }}
               />
               <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <span className="text-white font-medium text-sm tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">

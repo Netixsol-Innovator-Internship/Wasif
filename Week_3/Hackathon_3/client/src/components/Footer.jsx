@@ -63,7 +63,7 @@ const Footer = () => {
               {footerSections.collections.map((item, index) => (
                 <li key={index}>
                   <Link
-                    to={`/collections/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                    to={`/products`}
                     className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
                   >
                     {item}
@@ -121,22 +121,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        {/* Bottom Section */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center mb-4 md:mb-0">
-              <div className="flex items-center">
-                <svg className="w-6 h-6 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.09-.21 2.12-.56 3.03-1.03C14.6 26.59 14.13 26.31 13.63 26 13.13 25.69 12.59 25.32 12 24.9 12 24.9 12 24.9 12 24.9c-.59.42-1.13.79-1.63 1.1-.5.31-.97.59-1.4.84.86.22 1.76.38 2.7.47.18-.07.36-.15.54-.23C16.04 25.96 19 22.05 19 17V7L12 2z"/>
-                </svg>
-                <span className="ml-2 text-lg font-medium text-gray-900">Brand Name</span>
-              </div>
-            </div>
-            <div className="text-sm text-gray-500">
-              © {currentYear} Brand Name. All rights reserved.
-            </div>
-          </div>
-        </div>
+        
       </div>
     </footer>
   );

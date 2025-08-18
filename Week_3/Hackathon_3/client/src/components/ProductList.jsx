@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllProducts, getFilterOptions } from "../api/products";
 import { Link } from "react-router-dom";
-import ProductImage from '/assets/Productpage.jpg'
+import ProductImage from "/assets/Productpage.jpg";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
@@ -9,6 +9,7 @@ export default function ProductList() {
   const [options, setOptions] = useState({});
   const [loading, setLoading] = useState(true);
   const [collapsed, setCollapsed] = useState({});
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -60,30 +61,44 @@ export default function ProductList() {
 
   return (
     <>
-    <div className="w-full h-[308px]">
-      <img src={ProductImage} alt="" className=" w-full h-[308px] object-cover"/>
-    </div>
-      <div className="flex w-full mx-auto font-sans px-7">
-        {/* Sidebar filters */}
-        <aside className="w-72 p-4 border-r">
+      {/* Banner */}
+      <div className="w-full h-[200px] sm:h-[308px]">
+        <img
+          src={ProductImage}
+          alt=""
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      <div className="flex flex-col lg:flex-row w-full mx-auto font-sans px-4 sm:px-7">
+        {/* Mobile Filter Toggle */}
+        <div className="lg:hidden flex justify-between items-center py-4">
+          <p className="text-sm text-gray-600">
+            Showing {products.length} products
+          </p>
+          <button
+            className="px-4 py-2 border rounded text-sm"
+            onClick={() => setMobileFiltersOpen((prev) => !prev)}
+          >
+            {mobileFiltersOpen ? "Hide Filters" : "Show Filters"}
+          </button>
+        </div>
+
+        {/* Sidebar filters (collapsible on mobile, static on desktop) */}
+        <aside
+          className={`lg:block w-full lg:w-72 p-4 border-r lg:border-r-0 lg:border-none ${
+            mobileFiltersOpen ? "block" : "hidden"
+          }`}
+        >
           {[
-            {
-              key: "collections",
-              label: "COLLECTIONS",
-              values: options.collections,
-            },
+            { key: "collections", label: "COLLECTIONS", values: options.collections },
             { key: "origins", label: "ORIGIN", values: options.origins },
             { key: "flavour", label: "FLAVOR", values: options.flavours },
             { key: "qualities", label: "QUALITIES", values: options.benefits },
-            {
-              key: "caffeine",
-              label: "CAFFEINE",
-              values: options.caffeineLevels,
-            },
+            { key: "caffeine", label: "CAFFEINE", values: options.caffeineLevels },
             { key: "allergens", label: "ALLERGENS", values: options.allergens },
           ].map(({ key, label, values }) => (
             <div key={key} className="mb-6">
-              {/* Header with collapse toggle */}
               <button
                 onClick={() => toggleCollapse(key)}
                 className="flex justify-between items-center w-full font-bold text-xs uppercase tracking-wide mb-2"
@@ -94,7 +109,6 @@ export default function ProductList() {
                 </span>
               </button>
 
-              {/* Checkbox list */}
               {!collapsed[key] && (
                 <div className="space-y-1">
                   {values?.map((v) => (
@@ -130,7 +144,7 @@ export default function ProductList() {
               <div className="flex items-center gap-2">
                 <input
                   type="number"
-                  placeholder={`Min`}
+                  placeholder="Min"
                   className="w-20 p-1 border rounded text-sm"
                   onChange={(e) =>
                     handlePriceChange(Number(e.target.value), filters.maxPrice)
@@ -139,7 +153,7 @@ export default function ProductList() {
                 <span>-</span>
                 <input
                   type="number"
-                  placeholder={`Max`}
+                  placeholder="Max"
                   className="w-20 p-1 border rounded text-sm"
                   onChange={(e) =>
                     handlePriceChange(filters.minPrice, Number(e.target.value))
@@ -180,14 +194,14 @@ export default function ProductList() {
         </aside>
 
         {/* Products grid */}
-        <main className="flex-1 p-6">
-          {/* Sort bar */}
-          <div className="flex justify-between items-center mb-6">
+        <main className="flex-1 p-4 lg:p-6">
+          {/* Sort bar (hidden on mobile since we show above) */}
+          <div className="hidden lg:flex justify-between items-center mb-6">
             <p className="text-sm text-gray-600">
               Showing {products.length} products
             </p>
             <select
-              className=" rounded p-2 text-sm"
+              className="rounded p-2 text-sm"
               onChange={(e) => {
                 if (e.target.value === "priceAsc") {
                   setProducts(
@@ -211,24 +225,24 @@ export default function ProductList() {
           </div>
 
           {/* Product grid */}
-          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mx-auto">
             {products.map((p) => (
               <Link
                 to={`/products/${p._id}`}
                 key={p._id}
-                className="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden"
+                className="bg-white transition overflow-hidden"
               >
                 {p.image && (
                   <img
                     src={p.image.url}
                     alt={p.name}
-                    className="w-full h-48 object-cover"
+                    className="w-3xs h-64 object-cover mx-auto"
                   />
                 )}
-                <div className="p-4">
+                <div className="p-4 text-center">
                   <h3 className="font-semibold text-sm truncate">{p.name}</h3>
                   <p className="text-xs text-gray-500">{p.origins?.country}</p>
-                  <p className="mt-2 text-green-600 font-bold text-sm">
+                  <p className="mt-2 text-gray-600 font-bold text-sm">
                     €{p.price?.amount?.toFixed(2)} / {p.price?.unit || "g"}
                   </p>
                 </div>
