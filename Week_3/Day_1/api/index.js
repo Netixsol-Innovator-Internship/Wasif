@@ -9,7 +9,7 @@ const swaggerSpec = require("../swagger");
 // const connectDB = require("../config/db");
 
 const app = express();
-// app.use(express.json());
+app.use(express.json());
 app.use(cors({ origin: '*' })); 
 
 // Connect to DB once (not on every request)

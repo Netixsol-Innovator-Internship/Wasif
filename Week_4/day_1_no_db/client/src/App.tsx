@@ -89,8 +89,8 @@ export default function App() {
 
       {/* Stats */}
       <div className="mb-6 text-gray-600 text-center">
-        <span className="font-semibold">{stats.completed}</span> completed ·{" "}
-        <span className="font-semibold">{stats.pending}</span> pending ·{" "}
+        <span className="font-semibold">{stats.completed}</span> completed ·
+        <span className="font-semibold">{stats.pending}</span> pending ·
         <span className="font-semibold">{stats.total}</span> total
       </div>
 

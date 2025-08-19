@@ -1,25 +1,24 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { loginUser } from "../apis/auth";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async () => {
-    if (!email || !password) {
-      alert("Please fill in all fields");
-      return;
-    }
-
+  const onSubmit = async (data) => {
     try {
       setLoading(true);
 
-      const data = await loginUser(email, password);
+      const res = await loginUser(data.email, data.password);
 
-     
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("token", res.token);
 
       alert("Login successful!");
       window.location.href = "/";
@@ -37,30 +36,52 @@ export default function Login() {
           Login
         </h1>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full mb-4 p-2 bg-gray-600 text-white rounded-md focus:outline-none"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full mb-4 p-2 bg-gray-600 text-white rounded-md focus:outline-none"
-        />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {/* Email Input */}
+          <input
+            type="email"
+            placeholder="Email"
+            className="w-full mb-2 p-2 bg-gray-600 text-white rounded-md focus:outline-none"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Enter a valid email",
+              },
+            })}
+          />
+          {errors.email && (
+            <p className="text-red-400 text-sm mb-2">{errors.email.message}</p>
+          )}
 
-        <button
-          disabled={loading}
-          className={`w-full h-10 bg-gradient-to-bl from-[#6a00f4] to-cyan-700 text-white font-semibold rounded-sm ${
-            loading ? "opacity-50 cursor-not-allowed" : ""
-          }`}
-          onClick={handleLogin}
-        >
-          {loading ? "Logging in..." : "Login"}
-        </button>
+          {/* Password Input */}
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full mb-2 p-2 bg-gray-600 text-white rounded-md focus:outline-none"
+            {...register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 6,
+                message: "Password must be at least 6 characters",
+              },
+            })}
+          />
+          {errors.password && (
+            <p className="text-red-400 text-sm mb-2">{errors.password.message}</p>
+          )}
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full h-10 bg-gradient-to-bl from-[#6a00f4] to-cyan-700 text-white font-semibold rounded-sm ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+          >
+            {loading ? "Logging in..." : "Login"}
+          </button>
+        </form>
 
         <p className="text-gray-400 text-sm mt-4 text-center">
           Don't have an account?{" "}

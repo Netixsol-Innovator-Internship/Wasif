@@ -10,7 +10,8 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://day3-client.vercel.app",
+    origin: "http://localhost:5173",
+    credentials: true,
     methods: "POST, OPTIONS, PATCH, PUT, GET, DELETE",
   })
 );
@@ -31,8 +32,8 @@ app.use("/api/users", authRouter);
 app.use(errorHandler);
 
 // Export app for Vercel serverless
-app.listen(3000, () => {
-  console.log(`Server Running at ${3000}`);
+app.listen(5000, () => {
+  console.log(`Server Running at ${5000}`);
 });
 
 module.exports = app;
