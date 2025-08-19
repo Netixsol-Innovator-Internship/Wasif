@@ -65,19 +65,23 @@ export default function TasksScreen() {
   };
 
   const handleEdit = async (task) => {
-    if (editingId === task._id) {
-      try {
-        await updateTask(task._id, editText, task.completed);
-        setEditingId(null);
-        fetchTasks();
-      } catch (err) {
-        console.error("Error saving edit:", err);
-      }
-    } else {
-      setEditingId(task._id);
-      setEditText(task.title);
+  if (editingId === task._id) {
+    if (!editText.trim()) {
+      alert("Title cannot be empty");
+      return;
     }
-  };
+    try {
+      await updateTask(task._id, editText, task.completed);
+      setEditingId(null);
+      fetchTasks();
+    } catch (err) {
+      console.error("Error saving edit:", err);
+    }
+  } else {
+    setEditingId(task._id);
+    setEditText(task.title);
+  }
+};
 
   const handleDelete = async (id) => {
     try {
@@ -133,7 +137,7 @@ export default function TasksScreen() {
               />
             ) : (
               <p
-                className="flex-1 cursor-pointer"
+                className="flex-1 cursor-pointer break-words"
                 onClick={() => handleToggle(task)}
               >
                 {task.title}
