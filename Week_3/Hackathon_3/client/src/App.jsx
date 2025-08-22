@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
 import LandingPage from "./pages/LandingPage";
-import ProductsPage from "./pages/Products";
+import Products from "./pages/Products";
 import ProductDetail from "./components/ProductDetail";
 import Cart from "./components/Cart";
 import Navbar from "./components/Navbar";
@@ -36,7 +36,7 @@ export default function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<ProductDetail />} />
 
             <Route

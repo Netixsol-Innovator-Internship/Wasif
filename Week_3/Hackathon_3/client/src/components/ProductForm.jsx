@@ -467,31 +467,48 @@ export default function ProductForm({ product, onSubmit, onCancel }) {
     }
   };
 
-  const handleSubmit = () => {
-    const payload = {
-      image: {
-        url: formData.imageUrl, // For preview
-        altText: formData.imageAlt,
-        file: formData.imageFile, // Actual file for upload
-      },
-      name: formData.name,
-      collections: formData.collections,
-      origins: { country: formData.originCountry },
-      flavour: { profile: formData.flavourProfile },
-      qualities: {
-        benefits: formData.qualitiesBenefits,
-        organic: formData.organic,
-      },
-      caffeine: formData.caffeine,
-      allergens: formData.allergens,
-      price: {
-        amount: Number(formData.priceAmount),
-        unit: formData.priceUnit,
-      },
-      description: formData.description,
-    };
-    onSubmit(payload);
+const handleSubmit = async () => {
+  let imageUrl = formData.imageUrl; 
+
+  if (formData.imageFile) {
+    const formDataCloud = new FormData();
+    formDataCloud.append("file", formData.imageFile);
+    formDataCloud.append("upload_preset", "tea_store"); // replace with your preset
+    formDataCloud.append("cloud_name", "drygxmmvj"); // optional if using unsigned preset
+
+    try {
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/drygxmmvj/image/upload`,
+        {
+          method: "POST",
+          body: formDataCloud,
+        }
+      );
+      const data = await res.json();
+      imageUrl = data.secure_url; 
+    } catch (err) {
+      console.error("Cloudinary upload failed", err);
+      alert("Image upload failed. Please try again.");
+      return;
+    }
+  }
+
+  const payload = {
+    image: { url: imageUrl, altText: formData.imageAlt },
+    name: formData.name,
+    collections: formData.collections,
+    origins: { country: formData.originCountry },
+    flavour: { profile: formData.flavourProfile },
+    qualities: { benefits: formData.qualitiesBenefits, organic: formData.organic },
+    caffeine: formData.caffeine,
+    allergens: formData.allergens,
+    price: { amount: Number(formData.priceAmount), unit: formData.priceUnit },
+    description: formData.description,
   };
+
+  onSubmit(payload);
+};
+
 
   return (
     <div className="fixed inset-0 bg-gray-100/90 flex items-center justify-center z-50 p-4">
