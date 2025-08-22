@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { getProductById, getAllProducts } from "../api/products";
-import { addToCart } from "../api/cart";
+import {
+  useGetProductByIdQuery,
+  useGetAllProductsQuery,
+  useAddToCartMutation,
+} from "../redux/apiSlice";
+
 import AddBag from "/assets/local_mall.png";
-import Language from "/assets/language.png";
 import First from "/assets/50g.png";
 import Second from "/assets/100g.png";
 import Third from "/assets/250kg.png";
@@ -21,31 +24,20 @@ const productOptions = [
 export default function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [product, setProduct] = useState(null);
-  const [related, setRelated] = useState([]);
-  const [loading, setLoading] = useState(true);
+
+  // 🔹 Fetch product
+  const { data: product, isLoading, error } = useGetProductByIdQuery(id);
+
+  // 🔹 Fetch all products for "related"
+  const { data: allProducts = [] } = useGetAllProductsQuery({});
+
+  // 🔹 Add to cart mutation
+  const [addToCart] = useAddToCartMutation();
 
   const [quantity, setQuantity] = useState(1);
   const [selectedVariant, setSelectedVariant] = useState(null);
 
-  useEffect(() => {
-    async function fetchProductAndRelated() {
-      try {
-        const data = await getProductById(id);
-        setProduct(data);
-
-        const allProducts = await getAllProducts({});
-        const filtered = allProducts.filter((p) => p._id !== id);
-
-        setRelated(filtered.slice(0, 3));
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchProductAndRelated();
-  }, [id]);
+  const related = allProducts.filter((p) => p._id !== id).slice(0, 3);
 
   const handleAddToCart = async () => {
     const token = localStorage.getItem("token");
@@ -61,18 +53,16 @@ export default function ProductDetail() {
     }
 
     try {
-      await addToCart(product._id, quantity);
-      alert(
-        `Added ${quantity} x ${product.name} (${selectedVariant}) to cart!`
-      );
+      await addToCart({ productId: product._id, quantity }).unwrap();
+      alert(`Added ${quantity} x ${product.name} (${selectedVariant.label}) to cart!`);
     } catch (err) {
-      console.error("Add to cart failed:", err.response?.data || err.message);
-      alert(err.response?.data?.error || "Failed to add product to cart.");
+      console.error("Add to cart failed:", err);
+      alert("Failed to add product to cart.");
     }
   };
 
-  if (loading) return <p className="p-6">Loading...</p>;
-  if (!product) return <p className="p-6">Product not found.</p>;
+  if (isLoading) return <p className="p-6">Loading...</p>;
+  if (error || !product) return <p className="p-6">Product not found.</p>;
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
@@ -87,20 +77,15 @@ export default function ProductDetail() {
 
         {/* Product Info */}
         <div>
-          {/* Title */}
           <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
-
-          {/* Short Description */}
           <p className="text-gray-600 mb-4">{product.description}</p>
 
-          {/* Meta Info */}
           <div className="flex items-center gap-6 text-sm text-gray-700 mb-4">
             <span>🌍 Origin: {product.origins?.country}</span>
             <span>🍃 Organic</span>
             <span>🌱 Vegan</span>
           </div>
 
-          {/* Price */}
           <p className="text-2xl font-semibold text-gray-900 mb-6">
             €{product.price?.amount?.toFixed(2)} / {product.price?.unit || "g"}
           </p>
@@ -126,7 +111,7 @@ export default function ProductDetail() {
             </div>
           </div>
 
-          {/*  Quantity Selector */}
+          {/* Quantity */}
           <div className="flex items-center gap-4 mb-6">
             <button
               onClick={() => setQuantity((q) => Math.max(1, q - 1))}
@@ -143,7 +128,6 @@ export default function ProductDetail() {
             </button>
           </div>
 
-          {/* Add to Bag */}
           <button
             onClick={handleAddToCart}
             disabled={!selectedVariant}
@@ -159,57 +143,9 @@ export default function ProductDetail() {
         </div>
       </div>
 
-      {/* ====== STEEPING + ABOUT SECTION ====== */}
-      <div className="grid md:grid-cols-2 gap-8 mt-16 border-t pt-10 bg-gray-50 rounded-xl p-6">
-        {/* Steeping Instructions */}
-        <div>
-          <h2 className="text-xl font-semibold mb-6">Steeping instructions</h2>
-          <ul className="space-y-4 text-gray-700">
-            <li>
-              🍵 <b>Serving Size:</b> 2 tsp per cup, 6 tsp per pot
-            </li>
-            <li>
-              🔥 <b>Water Temperature:</b> 100°C
-            </li>
-            <li>
-              ⏳ <b>Steeping Time:</b> 3 - 5 minutes
-            </li>
-            <li>
-              🎨 <b>Color after 3 minutes:</b> Deep Amber
-            </li>
-          </ul>
-        </div>
-
-        {/* About this tea */}
-        <div>
-          <h2 className="text-xl font-semibold mb-6">About this tea</h2>
-          <div className="grid grid-cols-2 gap-y-3 text-gray-700 text-sm mb-4">
-            <p>
-              <b>Flavor:</b> Spicy
-            </p>
-            <p>
-              <b>Qualities:</b> Smoothing
-            </p>
-            <p>
-              <b>Caffeine:</b> Medium
-            </p>
-            <p>
-              <b>Allergens:</b> Nuts-free
-            </p>
-          </div>
-          <h3 className="font-semibold">Ingredients</h3>
-          <p className="text-gray-600">
-            Black Ceylon tea, Green tea, Ginger root, Cloves, Black pepper,
-            Cinnamon sticks, Cardamom, Cinnamon pieces.
-          </p>
-        </div>
-      </div>
-
-      {/* ====== RELATED PRODUCTS ====== */}
+      {/* Related products */}
       <div className="mt-20">
-        <h2 className="text-2xl font-semibold mb-6 text-center">
-          You may also like
-        </h2>
+        <h2 className="text-2xl font-semibold mb-6 text-center">You may also like</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
           {related.map((p) => (
             <Link

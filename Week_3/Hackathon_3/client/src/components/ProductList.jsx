@@ -1,33 +1,28 @@
-import { useEffect, useState } from "react";
-import { getAllProducts, getFilterOptions } from "../api/products";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  useGetAllProductsQuery,
+  useGetFilterOptionsQuery,
+} from "../redux/apiSlice";
 import ProductImage from "/assets/Productpage.jpg";
+import Spinner from "./Spinner";
 
 export default function ProductList() {
-  const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState({});
-  const [options, setOptions] = useState({});
-  const [loading, setLoading] = useState(true);
   const [collapsed, setCollapsed] = useState({});
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const [prods, filterOpts] = await Promise.all([
-          getAllProducts(filters),
-          getFilterOptions(),
-        ]);
-        setProducts(prods);
-        setOptions(filterOpts);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
-  }, [filters]);
+  // 🔹 Fetch products and filter options from RTK
+  const {
+    data: products = [],
+    isLoading: productsLoading,
+    error: productsError,
+  } = useGetAllProductsQuery(filters);
+
+  const { data: options = {}, isLoading: optionsLoading } =
+    useGetFilterOptionsQuery();
+
+  const loading = productsLoading || optionsLoading;
 
   const handleCheckboxChange = (key, value, checked) => {
     setFilters((prev) => {
@@ -57,20 +52,18 @@ export default function ProductList() {
     setCollapsed((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  if (loading) return <p className="p-6 text-gray-500">Loading...</p>;
+  if (loading) return <Spinner />;
+  if (productsError)
+    return <p className="p-6 text-red-500">Failed to load products.</p>;
 
   return (
     <>
       {/* Banner */}
       <div className="w-full h-[200px] sm:h-[308px]">
-        <img
-          src={ProductImage}
-          alt=""
-          className="w-full h-full object-cover"
-        />
+        <img src={ProductImage} alt="" className="w-full h-full object-cover" />
       </div>
 
-      <div className="flex flex-col lg:flex-row w-full mx-auto font-sans px-4 sm:px-7">
+      <div className="max-w-[1440px] flex flex-col lg:flex-row w-full mx-auto font-sans px-4 sm:px-7">
         {/* Mobile Filter Toggle */}
         <div className="lg:hidden flex justify-between items-center py-4">
           <p className="text-sm text-gray-600">
@@ -84,18 +77,26 @@ export default function ProductList() {
           </button>
         </div>
 
-        {/* Sidebar filters (collapsible on mobile, static on desktop) */}
+        {/* Sidebar filters */}
         <aside
-          className={`lg:block w-full lg:w-72 p-4 border-r lg:border-r-0 lg:border-none ${
+          className={`lg:block w-full lg:w-72 p-4 border-r lg:border-none ${
             mobileFiltersOpen ? "block" : "hidden"
           }`}
         >
           {[
-            { key: "collections", label: "COLLECTIONS", values: options.collections },
+            {
+              key: "collections",
+              label: "COLLECTIONS",
+              values: options.collections,
+            },
             { key: "origins", label: "ORIGIN", values: options.origins },
             { key: "flavour", label: "FLAVOR", values: options.flavours },
             { key: "qualities", label: "QUALITIES", values: options.benefits },
-            { key: "caffeine", label: "CAFFEINE", values: options.caffeineLevels },
+            {
+              key: "caffeine",
+              label: "CAFFEINE",
+              values: options.caffeineLevels,
+            },
             { key: "allergens", label: "ALLERGENS", values: options.allergens },
           ].map(({ key, label, values }) => (
             <div key={key} className="mb-6">
@@ -195,7 +196,6 @@ export default function ProductList() {
 
         {/* Products grid */}
         <main className="flex-1 p-4 lg:p-6">
-          {/* Sort bar (hidden on mobile since we show above) */}
           <div className="hidden lg:flex justify-between items-center mb-6">
             <p className="text-sm text-gray-600">
               Showing {products.length} products
@@ -204,17 +204,9 @@ export default function ProductList() {
               className="rounded p-2 text-sm"
               onChange={(e) => {
                 if (e.target.value === "priceAsc") {
-                  setProducts(
-                    [...products].sort(
-                      (a, b) => a.price.amount - b.price.amount
-                    )
-                  );
+                  products.sort((a, b) => a.price.amount - b.price.amount);
                 } else if (e.target.value === "priceDesc") {
-                  setProducts(
-                    [...products].sort(
-                      (a, b) => b.price.amount - a.price.amount
-                    )
-                  );
+                  products.sort((a, b) => b.price.amount - a.price.amount);
                 }
               }}
             >
@@ -224,7 +216,6 @@ export default function ProductList() {
             </select>
           </div>
 
-          {/* Product grid */}
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mx-auto">
             {products.map((p) => (
               <Link

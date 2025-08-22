@@ -1,35 +1,30 @@
-import { useState } from "react";
-import { signupUser } from "../api/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSignupMutation } from "../redux/apiSlice";
+import { useForm } from "react-hook-form";
 
 export default function Signup() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-  const handleSignup = async () => {
-    if (!name || !email || !password || !confirmPassword) {
-      alert("Please fill in all fields");
-      return;
-    }
+  const [signup, { isLoading }] = useSignupMutation();
+  const navigate = useNavigate();
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
-      return;
-    }
-
+  const onSubmit = async (data) => {
     try {
-      setLoading(true);
-      await signupUser(name, email, password);
+      await signup({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      }).unwrap();
 
       alert("Signup successful!");
-      window.location.href = "/login";
+      navigate("/login");
     } catch (err) {
-      alert(err.response?.data?.message || "Signup failed");
-    } finally {
-      setLoading(false);
+      alert(err?.data?.message || "Signup failed");
     }
   };
 
@@ -40,44 +35,82 @@ export default function Signup() {
           Sign Up
         </h1>
 
-        <input
-          type="text"
-          placeholder="Full Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="w-full mb-4 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-black"
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full mb-4 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-black"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full mb-4 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-black"
-        />
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          className="w-full mb-4 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-black"
-        />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {/* Full Name */}
+          <input
+            type="text"
+            placeholder="Full Name"
+            className="w-full mb-2 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-black"
+            {...register("name", { required: "Full name is required" })}
+          />
+          {errors.name && (
+            <p className="text-red-500 text-sm mb-2">{errors.name.message}</p>
+          )}
 
-        <button
-          disabled={loading}
-          className={`w-full h-10 bg-black text-white font-semibold rounded-md ${
-            loading ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-800"
-          }`}
-          onClick={handleSignup}
-        >
-          {loading ? "Signing Up..." : "Sign Up"}
-        </button>
+          {/* Email */}
+          <input
+            type="email"
+            placeholder="Email"
+            className="w-full mb-2 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-black"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Enter a valid email",
+              },
+            })}
+          />
+          {errors.email && (
+            <p className="text-red-500 text-sm mb-2">{errors.email.message}</p>
+          )}
+
+          {/* Password */}
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full mb-2 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-black"
+            {...register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 6,
+                message: "Password must be at least 6 characters",
+              },
+            })}
+          />
+          {errors.password && (
+            <p className="text-red-500 text-sm mb-2">
+              {errors.password.message}
+            </p>
+          )}
+
+          {/* Confirm Password */}
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            className="w-full mb-2 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-black"
+            {...register("confirmPassword", {
+              required: "Please confirm your password",
+              validate: (value) =>
+                value === watch("password") || "Passwords do not match",
+            })}
+          />
+          {errors.confirmPassword && (
+            <p className="text-red-500 text-sm mb-2">
+              {errors.confirmPassword.message}
+            </p>
+          )}
+
+          {/* Button */}
+          <button
+            disabled={isLoading}
+            type="submit"
+            className={`w-full h-10 bg-black text-white font-semibold rounded-md ${
+              isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-800"
+            }`}
+          >
+            {isLoading ? "Signing Up..." : "Sign Up"}
+          </button>
+        </form>
 
         <p className="text-gray-600 text-sm mt-4 text-center">
           Already have an account?{" "}

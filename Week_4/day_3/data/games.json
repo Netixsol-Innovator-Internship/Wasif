@@ -1,0 +1,179 @@
+{
+  "sale": [
+    {
+      "src": "/Valo.jpg",
+      "title": "Valorant",
+      "price": 900,
+      "discountPrice": 850,
+      "discount": "-10%"
+    },
+    {
+      "src": "/Assasian.jpg",
+      "title": "Assassin's Creed Valhalla",
+      "price": 3499,
+      "discountPrice": 2999,
+      "discount": "-20%"
+    },
+    {
+      "src": "/RedShot.jpg",
+      "title": "Red Dead Redemption 2",
+      "price": 3199,
+      "discountPrice": 1599,
+      "discount": "-50%"
+    },
+    {
+      "src": "/Tomb.jpg",
+      "title": "The Tomb Raider",
+      "price": 2195,
+      "discountPrice": 2000,
+      "discount": "-20%"
+    },
+    {
+      "src": "/Cyber.jpg",
+      "title": "Cyberpunk 2077",
+      "price": 4000,
+      "discountPrice": 2000,
+      "discount": "-50%"
+    }
+  ],
+  "featured": [
+    {
+      "src": "/GOW.jpg",
+      "title": "God Of War 4"
+    },
+    {
+      "src": "/F6.jpg",
+      "title": "Farcry 6 Golden Edition"
+    },
+    {
+      "src": "/G5.jpg",
+      "title": "GTA V"
+    },
+    {
+      "src": "/OTL.jpg",
+      "title": "Outlast 2"
+    }
+  ],
+  "Games": [
+    {
+      "src": "/NFS.jpg",
+      "title": "NFS Unbound",
+      "price": 3499,
+      "description": "Pre-purchase NFS Unbound and get an exclusive Driving Effect, License Plate, $150,000 Bank, and more."
+    },
+    {
+      "src": "/FIFA.jpg",
+      "title": "FIFA 23",
+      "price": 3699,
+      "description": "FIFA 23 brings The World's Game to the pitch, with HyperMotion2 Technology, men's and women's FIFA World Cup."
+    },
+    {
+      "src": "/Uncharted.jpg",
+      "title": "Uncharted 4",
+      "price": 2199,
+      "description": "Get the definitive Uncharted 4 experience with all Season Pass content, the Ultimate Pack, and upcoming expansion."
+    }
+  ],
+  "topSellers": [
+    {
+      "src": "/GSU.jpg",
+      "title": "Ghostbusters: Spirits Unleashed",
+      "price": 24499
+    },
+    {
+      "src": "/G5.jpg",
+      "title": "GTA V: Premier Edition",
+      "price": 24499
+    },
+    {
+      "src": "/D5.jpg",
+      "title": "Days Gone",
+      "price": 23699
+    },
+    {
+      "src": "/LTU.jpg",
+      "title": "Last of Us",
+      "price": 1499
+    },
+    {
+      "src": "/GOW.jpg",
+      "title": "God of War 4",
+      "price": 22659
+    }
+  ],
+  "bestSellers": [
+    {
+      "src": "/Uncharted.jpg",
+      "title": "Fortnite Free",
+      "price": 0
+    },
+    {
+      "src": "/G5.jpg",
+      "title": "GTA V: Premier Edition",
+      "price": 2499
+    },
+    {
+        "src": "/IGI2.jpg",
+      "title": "IGI 2",
+      "price": 1499
+    },
+    {
+        "src": "/TR.jpg",
+      "title": "Tomb Raider",
+      "price": 2499
+    },
+    {
+        "src": "/UC4.jpg",
+      "title": "Uncharted 4",
+      "price": 3499
+    }
+  ],
+  "topUpcoming": [
+    {
+        "src": "/HL.jpg",
+      "title": "Hogwarts Legacy",
+      "price": 22999
+    },
+    {
+        "src": "/ULT.jpg",
+      "title": "Uncharted Legacy of Thieves",
+      "price": 24499
+    },
+    {
+        "src": "/ACM.jpg",
+      "title": "Assassin's Creed Mirage",
+      "price": 3499
+    },
+    {
+        "src": "/Last.jpg",
+      "title": "Last of Us II",
+      "price": 3999
+    },
+    {
+      "title": "DD",
+      "status": "coming soon"
+    }
+  ],
+  "freeGames": [
+    {
+        "src": "/Darkwood.jpg",
+      "title": "Darkwood",
+      "freePeriod": "Free Now-Jul25"
+    },
+    {
+        "src": "/AssasianFree.jpg",
+      "title": "Assassin's Creed Black Flag",
+      "freePeriod": "Free Ju27-Aug5"
+    },
+    {
+        "src": "/Shift.jpg",
+      "title": "NFS Shift",
+      "freePeriod": "Free Ju27-Aug5"
+    },
+    {
+        "src": "/Warfare.jpg",
+      "title": "Warface",
+      "freePeriod": "Free Ju27-Aug5"
+    }
+  ]
+}

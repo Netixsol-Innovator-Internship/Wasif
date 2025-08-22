@@ -1,51 +1,61 @@
-import { useEffect, useState } from "react";
-import { getCart, updateCartItem, removeFromCart } from "../api/cart";
-import { useNavigate, Link } from "react-router-dom";
-import { getAllProducts } from "../api/products"; // ✅ import products API
-import Visa from '../../public/assets/Visa.png'
-import MasterCard1 from '../../public/assets/maestro-dark-large.png'
-import MasterCard2 from '../../public/assets/mastercard-dark-large.png'
-import MasterCard3 from '../../public/assets/Group 30.png'
-import Group from '../../public/assets/Group 29.png'
+import { Link, useNavigate } from "react-router-dom";
+import {
+  useGetCartQuery,
+  useUpdateCartItemMutation,
+  useRemoveFromCartMutation,
+  useGetAllProductsQuery,
+} from "../redux/apiSlice";
+
+import Visa from "../../public/assets/Visa.png";
+import MasterCard1 from "../../public/assets/maestro-dark-large.png";
+import MasterCard2 from "../../public/assets/mastercard-dark-large.png";
+import MasterCard3 from "../../public/assets/Group 30.png";
+import Group from "../../public/assets/Group 29.png";
 
 export default function Cart() {
-  const [cart, setCart] = useState(null);
-  const [related, setRelated] = useState([]); // ✅ new state for related
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-      return;
-    }
+  // 🔹 Cart
+  const {
+    data: cart,
+    isLoading: cartLoading,
+    error: cartError,
+  } = useGetCartQuery();
 
-    async function fetchCartAndRelated() {
-      try {
-        // Fetch Cart
-        const data = await getCart();
-        setCart(data);
+  // 🔹 Related products (fetch all, pick first 3)
+  const { data: allProducts = [] } = useGetAllProductsQuery({});
+  const related = allProducts.slice(0, 3);
 
-        // Fetch all products (use any logic you prefer to pick related)
-        const allProducts = await getAllProducts({});
-        setRelated(allProducts.slice(0, 3)); // just grab first 3
-      } catch (err) {
-        console.error(err);
-      }
-    }
-    fetchCartAndRelated();
-  }, [navigate]);
+  // 🔹 Mutations
+  const [updateCartItem] = useUpdateCartItemMutation();
+  const [removeFromCart] = useRemoveFromCartMutation();
+
+  // 🔹 Auth check
+  const token = localStorage.getItem("token");
+  if (!token) {
+    navigate("/login");
+    return null;
+  }
 
   const handleQuantityChange = async (itemId, quantity) => {
     if (quantity <= 0) return;
-    const updated = await updateCartItem(itemId, quantity);
-    setCart(updated);
+    try {
+      await updateCartItem({ itemId, quantity }).unwrap();
+    } catch (err) {
+      console.error("Update failed:", err);
+    }
   };
 
   const handleRemove = async (itemId) => {
-    const updated = await removeFromCart(itemId);
-    setCart(updated);
+    try {
+      await removeFromCart({ itemId }).unwrap();
+    } catch (err) {
+      console.error("Remove failed:", err);
+    }
   };
+
+  if (cartLoading) return <p className="p-6 text-gray-600">Loading cart...</p>;
+  if (cartError) return <p className="p-6 text-red-500">Failed to load cart.</p>;
 
   if (!cart || cart.items.length === 0) {
     return <p className="p-6 text-gray-600">Your cart is empty.</p>;
@@ -71,7 +81,7 @@ export default function Cart() {
             >
               <div className="flex items-center gap-4">
                 <img
-                  src={item.product.image?.url || "https://via.placeholder.com/60"}
+                  src={item.product.image?.url }
                   alt={item.product.name}
                   className="w-16 h-16 object-cover rounded"
                 />

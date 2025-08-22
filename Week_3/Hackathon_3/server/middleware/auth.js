@@ -1,19 +1,31 @@
+// middleware/authMiddleware.js
 const jwt = require("jsonwebtoken");
 
-module.exports = (req, res, next) => {
-  const token = req.header("Authorization")?.replace("Bearer ", "");
-  if (!token)
-    return res.status(401).json({
-      message: "No Token Found",
-    });
-  try {
-    const decodeToken = jwt.verify(token, process.env.JWT_SECRET);
-    console.log({ decodeToken });
-    req.user = { _id: decodeToken.id };
-    next();
-  } catch (err) {
-    res.status(401).json({
-      message: "Invalid Token",
-    });
-  }
+module.exports = {
+  protect: (req, res, next) => {
+    const token = req.header("Authorization")?.replace("Bearer ", "");
+    if (!token) {
+      return res.status(401).json({ message: "No token provided" });
+    }
+
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+      req.user = {
+        _id: decoded.id,
+        role: decoded.role,
+      };
+
+      next();
+    } catch (err) {
+      return res.status(401).json({ message: "Invalid or expired token" });
+    }
+  },
+
+  isAdmin: (req, res, next) => {
+    if (req.user.role === "admin" || req.user.role === "superAdmin") {
+      return next();
+    }
+    return res.status(403).json({ message: "Access denied: Admins only" });
+  },
 };

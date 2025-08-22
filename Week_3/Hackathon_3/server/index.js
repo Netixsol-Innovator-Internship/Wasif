@@ -3,6 +3,8 @@ const express = require("express");
 const productRouter = require("./routes/productRoutes");
 const authRouter = require("./routes/authRoutes");
 const cartRouter = require("./routes/cartRoutes");
+const adminRouter = require("./routes/adminRoutes");
+const userRouter = require("./routes/userRoutes");
 const errorHandler = require("./middleware/errorHandling");
 require("dotenv").config();
 const connectDB = require("./config/db");
@@ -15,10 +17,15 @@ connectDB();
 app.get("/", (req, res) => {
   return res.json({ Wasif: "Developer" });
 });
+
 app.use("/api/users", authRouter);
 app.use("/api/products", productRouter);
 app.use("/api/cart", cartRouter);
+app.use("/api/admin", adminRouter);
+app.use("/api/usercontrol", userRouter);
+
 app.use(errorHandler);
+
 app.listen(5000, () => {
   console.log(`Server Running at ${5000}`);
 });

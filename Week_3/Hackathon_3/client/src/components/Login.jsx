@@ -1,31 +1,43 @@
-import { useState } from "react";
-import { loginUser } from "../api/auth";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { useLoginMutation } from "../redux/apiSlice";
+import { useForm } from "react-hook-form";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleLogin = async () => {
-    if (!email || !password) {
-      alert("Please fill in all fields");
-      return;
-    }
+  const [login, { isLoading }] = useLoginMutation();
+  const navigate = useNavigate();
 
+  const onSubmit = async (data) => {
     try {
-      setLoading(true);
+      const response = await login(data).unwrap();
 
-      const data = await loginUser(email, password);
+      // Check if user is blocked
+      if (response?.user?.isBlocked) {
+        alert("Your account has been blocked. Please contact support.");
+        return;
+      }
 
-      localStorage.setItem("token", data.token);
+      // Save token & user
+      localStorage.setItem("token", response.token);
+      localStorage.setItem("user", JSON.stringify(response.user));
 
       alert("Login successful!");
-      window.location.href = "/";
+
+      if (
+        response.user.role === "superAdmin" ||
+        response.user.role === "admin"
+      ) {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/");
+      }
     } catch (err) {
-      alert(err.response?.data?.message || "Login failed");
-    } finally {
-      setLoading(false);
+      alert(err?.data?.message || "Login failed");
     }
   };
 
@@ -36,33 +48,57 @@ export default function Login() {
           Login
         </h1>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full mb-4 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-black"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full mb-4 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-black"
-        />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {/* Email */}
+          <input
+            type="email"
+            placeholder="Email"
+            className="w-full mb-2 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-black"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Enter a valid email",
+              },
+            })}
+          />
+          {errors.email && (
+            <p className="text-red-500 text-sm mb-2">{errors.email.message}</p>
+          )}
 
-        <button
-          disabled={loading}
-          className={`w-full h-10 bg-black text-white font-semibold rounded-md ${
-            loading ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-800"
-          }`}
-          onClick={handleLogin}
-        >
-          {loading ? "Logging in..." : "Login"}
-        </button>
+          {/* Password */}
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full mb-2 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-black"
+            {...register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 6,
+                message: "Password must be at least 6 characters",
+              },
+            })}
+          />
+          {errors.password && (
+            <p className="text-red-500 text-sm mb-2">
+              {errors.password.message}
+            </p>
+          )}
+
+          {/* Button */}
+          <button
+            disabled={isLoading}
+            type="submit"
+            className={`w-full h-10 bg-black text-white font-semibold rounded-md ${
+              isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-800"
+            }`}
+          >
+            {isLoading ? "Logging in..." : "Login"}
+          </button>
+        </form>
 
         <p className="text-gray-600 text-sm mt-4 text-center">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link to="/signup" className="text-black font-medium hover:underline">
             Sign up
           </Link>

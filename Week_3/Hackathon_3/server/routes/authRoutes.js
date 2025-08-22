@@ -1,20 +1,35 @@
 const express = require("express");
 const { register, login } = require("../controllers/authController");
-const { body, validationResult } = require('express-validator');
+const { body, validationResult } = require("express-validator");
 
 const router = express.Router();
+
+
+const handleValidation = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      message: "Validation failed",
+      errors: errors.array(),
+    });
+  }
+  next();
+};
+
 
 const validateRegister = [
   body("name").notEmpty().withMessage("Name is required"),
   body("email").isEmail().withMessage("Valid email is required"),
   body("password")
     .isLength({ min: 6 })
-    .withMessage("Password must be at least 6 chars"),
+    .withMessage("Password must be at least 6 characters"),
+  handleValidation,
 ];
 
 const validateLogin = [
   body("email").isEmail().withMessage("Valid email is required"),
   body("password").notEmpty().withMessage("Password is required"),
+  handleValidation,
 ];
 
 router.post("/register", validateRegister, register);
